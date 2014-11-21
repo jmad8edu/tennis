@@ -21,9 +21,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql
+  adapter: pg
   encoding: utf8
   database: rails
-  username: rails
+  username: root
   password:
-  socket: /tmp/mysql.sock
