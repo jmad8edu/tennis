@@ -21,8 +21,9 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: pg
+  adapter: mysql
   encoding: utf8
   database: rails
+  pool: 5
   username: root
   password:
