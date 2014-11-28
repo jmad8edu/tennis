@@ -1,0 +1,22 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <%= link_to "Pickup-Tennis", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav pull-right">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Sign up", "/signup" %></li>
+          <li><%= link_to "Log in", "/login" %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><%= link_to "Log in", "/login" %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Log in", "/login" %></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+  </div>
+</header>

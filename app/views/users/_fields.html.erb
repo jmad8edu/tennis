@@ -1,0 +1,34 @@
+<div>
+	<%= f.label :first_name %>
+	<%= f.text_field :first_name %>
+</div>
+<div>
+	<%= f.label :last_name %>
+	<%= f.text_field :last_name %>
+</div>
+<div>
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+</div>
+<div>
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+</div>
+<div>
+	<%= f.label :password_confirmation, "Confirm Password" %>
+	<%= f.password_field :password_confirmation %>
+</div>
+<div>
+	<%= f.label :phone %>
+	<%= f.text_field :phone %>
+</div>
+<div>
+	<%= f.label :court_address %>
+	<%= f.text_field :court_address %>
+</div>
+<div>
+	<%= label :right_left_handed, 'Right handed' %>
+	<%= f.radio_button :right_left_handed, 'right', :checked => true %> 
+	<%= label :right_left_handed, 'Left handed' %>
+	<%= f.radio_button :right_left_handed, 'left' %>
+</div>
