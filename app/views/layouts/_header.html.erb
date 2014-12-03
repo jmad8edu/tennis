@@ -14,7 +14,9 @@
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <li><%= link_to "My account", current_user %></li>
                 <li class="divider"></li>
-                <li><%= link_to "Log out", logout_path, method: :delete %></li>
+                <li>
+                <%= link_to "Log out", logout_path, method: "delete" %>
+                </li>
               </ul>
             </li>
           <% end %>
