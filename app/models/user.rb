@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
     	errors.add(:right_left_handed, "must be 'right' or 'left'")
     end
   end
+
+  def name
+    self.first_name + " " + self.last_name
+  end
 end

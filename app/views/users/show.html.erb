@@ -1,1 +1,39 @@
-<%= @user.first_name %> <%= @user.last_name %>, <%= @user.email %>
+<div class="container">
+	<div class="col-sm-6" style="text-align:right;padding-right:20px;">
+		First Name:
+	</div>
+	<div class="col-sm-6">
+		<%= @user.first_name %>
+	</div>
+</div>
+<div class="container">
+	<div class="col-sm-6" style="text-align:right;padding-right:20px;">
+		Last Name:</div>
+	<div class="col-sm-6">
+		<%= @user.last_name %>
+	</div>
+</div>
+<div class="container">
+	<div class="col-sm-6" style="text-align:right;padding-right:20px;">
+		Email:
+	</div>
+	<div class="col-sm-6">
+		<%= @user.email %>
+	</div>
+</div>
+<div class="container">
+	<div class="col-sm-6" style="text-align:right;padding-right:20px;">
+		Phone:
+	</div>
+	<div class="col-sm-6">
+		<%= @user.phone %>
+	</div>
+</div>
+<div class="container">
+	<div class="col-sm-6" style="text-align:right;padding-right:20px;">
+		Court Address:
+	</div>
+	<div class="col-sm-6">
+		<%= @user.court_address %>
+	</div>
+</div>
