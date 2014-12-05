@@ -1,34 +1,52 @@
-<div>
+<div class="row">
 	<%= f.label :first_name %>
 	<%= f.text_field :first_name %>
 </div>
-<div>
+<div class="row">
 	<%= f.label :last_name %>
 	<%= f.text_field :last_name %>
 </div>
-<div>
+<div class="row">
 	<%= f.label :email %>
 	<%= f.text_field :email %>
 </div>
-<div>
+<div class="row">
 	<%= f.label :password %>
 	<%= f.password_field :password %>
 </div>
-<div>
-	<%= f.label :password_confirmation, "Confirm Password" %>
+<div class="row">
+	<%= f.label :password_confirmation, "Confirm password" %>
 	<%= f.password_field :password_confirmation %>
 </div>
-<div>
+<div class="row">
 	<%= f.label :phone %>
 	<%= f.text_field :phone %>
 </div>
-<div>
+<div class="row">
 	<%= f.label :court_address %>
 	<%= f.text_field :court_address %>
 </div>
-<div>
-	<%= label :right_left_handed, 'Right handed' %>
-	<%= f.radio_button :right_left_handed, 'right', :checked => true %> 
-	<%= label :right_left_handed, 'Left handed' %>
-	<%= f.radio_button :right_left_handed, 'left' %>
+<div class="row">
+	<div>
+		<%= label :skill_level_id, "Skill level" %>
+	</div>
+	<% @skill_levels.each do |skill_level| %>
+		<div class="col-md-4">
+			<%= f.radio_button :skill_level_id, skill_level.id %>
+			<%= f.label :skill_level_id, "#{skill_level.skill_level} (#{skill_level.ntrp_rating})", value: skill_level.id %>
+		</div>
+	<%end%>
+</div>
+<div class="row">
+	<div>
+		<%= label :right_left_handed, "Right or left handed?" %>
+	</div>
+	<div class="col-md-2">
+		<%= f.radio_button :right_left_handed, 'right', checked: true %> 
+		<%= f.label :right_left_handed, 'Right', value: "right" %>
+	</div>
+	<div class="col-md-2">
+		<%= f.radio_button :right_left_handed, 'left', value: "left" %>
+		<%= f.label :right_left_handed, 'Left', value: "left" %>
+	</div>
 </div>

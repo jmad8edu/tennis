@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202034803) do
+ActiveRecord::Schema.define(version: 20141205013118) do
+
+  create_table "skill_levels", force: true do |t|
+    t.string   "skill_level"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.float    "ntrp_rating"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -23,8 +30,10 @@ ActiveRecord::Schema.define(version: 20141202034803) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "password_digest"
+    t.integer  "skill_level_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["skill_level_id"], name: "index_users_on_skill_level_id"
 
 end

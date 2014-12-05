@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	def new
 		@user = User.new
+		@skill_levels = SkillLevel.all
 	end
 
 	def create

@@ -150,11 +150,17 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input[type="text"], input[type="password"], textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
-  margin-bottom: 15px;
   @include box_sizing;
+}
+
+form{
+  div.row
+  {
+    margin-bottom: 15px;
+  }
 }
 
 input {
