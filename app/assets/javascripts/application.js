@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require angular
+//= require bootstrap/bootstrap-tooltip
+
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

@@ -1,34 +1,35 @@
 <div class="row">
 	<%= f.label :first_name %>
-	<%= f.text_field :first_name %>
+	<%= f.text_field :first_name, class: 'form-control', placeholder: "Enter first name" %>
 </div>
 <div class="row">
 	<%= f.label :last_name %>
-	<%= f.text_field :last_name %>
+	<%= f.text_field :last_name, class: 'form-control', placeholder: "Enter last name" %>
 </div>
 <div class="row">
 	<%= f.label :email %>
-	<%= f.text_field :email %>
+	<%= f.text_field :email, class: 'form-control', placeholder: "Enter email" %>
 </div>
 <div class="row">
 	<%= f.label :password %>
-	<%= f.password_field :password %>
+	<%= f.password_field :password, class: 'form-control', placeholder: "Enter password" %>
 </div>
 <div class="row">
 	<%= f.label :password_confirmation, "Confirm password" %>
-	<%= f.password_field :password_confirmation %>
+	<%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Enter password" %>
 </div>
 <div class="row">
 	<%= f.label :phone %>
-	<%= f.text_field :phone %>
+	<%= f.text_field :phone, class: 'form-control', placeholder: "Enter phone number (optional)" %>
 </div>
 <div class="row">
 	<%= f.label :court_address %>
-	<%= f.text_field :court_address %>
+	<%= f.text_field :court_address, class: 'form-control', placeholder: "Enter court address (optional)" %>
 </div>
 <div class="row">
 	<div>
 		<%= label :skill_level_id, "Skill level" %>
+		<span class="glyphicon glyphicon-question-sign" tabindex="0" data-toggle="popover" data-trigger="focus" data-html="true" title="What's my skill level?" data-content="For explanations on skill rating, click <a href='http://www.usta.com/Adult-Tennis/USTA-League/Information/1655_General_Characteristics_of_Various_NTRP_Playing_Levels/' target='_blank'>here</a>"></span>
 	</div>
 	<% @skill_levels.each do |skill_level| %>
 		<div class="col-md-4">
@@ -42,7 +43,7 @@
 		<%= label :right_left_handed, "Right or left handed?" %>
 	</div>
 	<div class="col-md-2">
-		<%= f.radio_button :right_left_handed, 'right', checked: true %> 
+		<%= f.radio_button :right_left_handed, 'right' %> 
 		<%= f.label :right_left_handed, 'Right', value: "right" %>
 	</div>
 	<div class="col-md-2">

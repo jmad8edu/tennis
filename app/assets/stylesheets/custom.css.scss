@@ -159,7 +159,10 @@ input[type="text"], input[type="password"], textarea, select, .uneditable-input 
 form{
   div.row
   {
-    margin-bottom: 15px;
+    margin: 0 10px 15px 10px;
+  }
+  .btn{
+    width:100%;
   }
 }
 
@@ -222,20 +225,6 @@ aside {
   }
 }
 
-/* Ward show */
-
-.companionships {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border: 1px solid $blue;
-    background-color: $light-blue;
-    border-radius:3px;
-  }
-}
-
 /* miscellaneous */
 
 .debug_dump {
@@ -245,3 +234,15 @@ aside {
   margin-top: 45px;
   @include box_sizing;
 }
+
+.glyphicon-question-sign{
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+

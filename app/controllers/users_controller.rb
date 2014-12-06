@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 	    log_in @user
 	    redirect_to @user
 	  else
+		@skill_levels = SkillLevel.all
 	    render 'new'
 	  end
 	end
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
 	private
 
 		def user_params
-			params.require(:user).permit(:first_name, :last_name, :email, :password, 
-				:phone, :court_address, :right_left_handed)
+			params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,
+				:phone, :court_address, :skill_level_id, :right_left_handed)
 		end
 end
