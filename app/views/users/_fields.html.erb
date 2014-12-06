@@ -19,17 +19,17 @@
 	<%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Enter password" %>
 </div>
 <div class="row">
-	<%= f.label :phone %>
-	<%= f.text_field :phone, class: 'form-control', placeholder: "Enter phone number (optional)" %>
+	<%= f.label :phone, "Phone (optional)" %>
+	<%= f.text_field :phone, class: 'form-control', placeholder: "Enter phone number in format (xxx) xxx-xxxx" %>
 </div>
 <div class="row">
-	<%= f.label :court_address %>
-	<%= f.text_field :court_address, class: 'form-control', placeholder: "Enter court address (optional)" %>
+	<%= f.label :court_address, "Court address (optional)" %>
+	<%= f.text_field :court_address, class: 'form-control', placeholder: "Enter court address" %>
 </div>
 <div class="row">
 	<div>
 		<%= label :skill_level_id, "Skill level" %>
-		<span class="glyphicon glyphicon-question-sign" tabindex="0" data-toggle="popover" data-trigger="focus" data-html="true" title="What's my skill level?" data-content="For explanations on skill rating, click <a href='http://www.usta.com/Adult-Tennis/USTA-League/Information/1655_General_Characteristics_of_Various_NTRP_Playing_Levels/' target='_blank'>here</a>"></span>
+		<span class="glyphicon glyphicon-question-sign" tabindex="0" data-toggle="popover" data-trigger="focus" data-html="true" title="What's my skill level?" data-content="For explanations on skill ratings, click <a href='http://www.usta.com/Adult-Tennis/USTA-League/Information/1655_General_Characteristics_of_Various_NTRP_Playing_Levels/' target='_blank'>here</a>"></span>
 	</div>
 	<% @skill_levels.each do |skill_level| %>
 		<div class="col-md-4">

@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
     skill = SkillLevel.create(skill_level: "beginner", ntrp_rating: "wuddup")
     @user = User.new(first_name: "Example", last_name: "User", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar", right_left_handed: "right",
-                     skill_level_id: skill.id)
+                     phone: "555 555 5555", skill_level_id: skill.id)
   end
 
   test "should be valid" do
@@ -84,16 +84,37 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "hand validation should reject invalid values" do
-	@user.right_left_handed = "    "
-	assert_not @user.valid?
-	@user.right_left_handed = ""
-	assert_not @user.valid?
-	@user.right_left_handed = "something"
-	assert_not @user.valid?
+	  @user.right_left_handed = "    "
+	  assert_not @user.valid?
+	  @user.right_left_handed = ""
+	  assert_not @user.valid?
+	  @user.right_left_handed = "something"
+	  assert_not @user.valid?
+  end
+
+  test "phone number should accept valid phone numbers" do
+    valid_numbers = ["", "(123) 555-1234", "1231231234", "123-456-7890",
+                    "123 456-7890", "1 2 3 4 5 6 7 8 9 0" ]
+    valid_numbers.each do |valid_number|
+      @user.phone = valid_number
+      assert @user.valid?, "#{valid_number.inspect} should be valid"
+    end
+  end
+
+  test "phone number should reject invalid phone numbers" do
+    valid_numbers = ["123) 456-7890", "4567890", "12345678910", "12345678a", "(123) 45-67890"]
+    valid_numbers.each do |valid_number|
+      @user.phone = valid_number
+      assert_not @user.valid?, "#{valid_number.inspect} should be invalid"
+    end
+  end
+
+  test "phone numbers should be saved formatted" do
+    mixed_case_phone_number = "1234567890"
+    @user.phone = mixed_case_phone_number
+    @user.save
+    assert_equal "(123) 456-7890", @user.reload.phone
   end
 end
-
-
-
 
 

@@ -1,21 +1,23 @@
 class User < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   has_one :skill_level
-  before_save { self.email = email.downcase }
+  before_save :format_fields
   validates :first_name,  presence: true, length: { maximum: 50 }
   validates :last_name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validate :right_left_handed_check
-  validate :skill_level_check
   validates :password, length: { minimum: 6 }
   has_secure_password
+  validate :phone_number_check
+  validate :skill_level_check
+  validate :right_left_handed_check
 
   def right_left_handed_check
-  	if self.right_left_handed == nil || 
+    if self.right_left_handed == nil || 
       (self.right_left_handed.downcase != "right" && self.right_left_handed.downcase != "left")
-    	errors.add(:right_left_handed, "must be specified")
+      errors.add(:right_left_handed, "must be specified")
     end
   end
 
@@ -34,6 +36,34 @@ class User < ActiveRecord::Base
       if !id_is_valid
         errors.add(:skill_level, "must be a valid skill level")
       end
+    end
+  end
+
+  def phone_number_check
+    if self.phone != nil && self.phone != ''
+      begin
+        number = self.phone.gsub(/\s|\(|\)|-/, "")
+        number_to_phone(number, area_code: true, raise: true)
+
+        re = /(((\(\s*(\d\s*){3}\))|((\d\s*){3}))\s*-?\s*(\d\s*){3}\s*-?\s*(\d\s*){4})/
+        if (self.phone =~ re) == nil
+          errors.add(:phone, "must be in format (xxx) xxx-xxxx")
+        elsif number.size != 10
+          errors.add(:phone, "must be 10 digits long")
+        end
+      rescue
+        errors.add(:phone, "must be in format (xxx) xxx-xxxx")
+      end
+    end
+  end
+
+  def format_fields
+    # format email
+    self.email = email.downcase 
+
+    # format phone
+    if self.phone != nil && self.phone != ''
+      self.phone = number_to_phone(phone.gsub(/\s|\(|\)|-/, ""), area_code: true )
     end
   end
 
