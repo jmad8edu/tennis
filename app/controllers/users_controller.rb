@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   	helper_method :sort_param, :direction_param
 
 	def index
-    	@users = User.reorder(sort_param + " " + direction_param).paginate(page: params[:page])
+    	@users = User.paginate(page: params[:page]).order(sort_param + " " + direction_param)
   	end
 
 	def new

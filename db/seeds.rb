@@ -38,7 +38,7 @@ User.create!(first_name:              "Justin",
              right_left_handed:       "right",
              skill_level_id:          5)
 switch = false;
-999.times do |n|
+299.times do |n|
   first_name  = Faker::Name.first_name
   last_name  = Faker::Name.last_name
   email = "example-#{n+1}@railstutorial.org"
