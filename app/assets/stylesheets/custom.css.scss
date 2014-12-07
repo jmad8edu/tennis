@@ -259,10 +259,20 @@ aside {
   @extend .glyphicon;
   @extend .glyphicon-chevron-down;
 }
-
-ul.pagination li.disabled:not(.prev):not(.next) a{
-  padding-right: 5px;
-  padding-left: 5px;
+@media (max-width: $screen-xs-max) {
+  ul.pagination{
+    li:not(.prev):not(.next) a{
+      width:30px;
+      text-aligh:center;
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+    li.disabled:not(.prev):not(.next) a{
+      width:auto;
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+  }
 }
 
 
