@@ -29,18 +29,27 @@ SkillLevel.create!(skill_level: "Professional",
 				   ntrp_rating: "6.5")
 SkillLevel.create!(skill_level: "Professional",
 				   ntrp_rating: "7.0")
+password = "password"
+User.create!(first_name:              "Justin",
+             last_name:               "Madsen",
+             email:                   "justinmadsen4@gmail.com",
+             password:                password,
+             password_confirmation:   password,
+             right_left_handed:       "right",
+             skill_level_id:          5)
+switch = false;
 99.times do |n|
   first_name  = Faker::Name.first_name
   last_name  = Faker::Name.last_name
   email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  hand = "right"
-  skill_level_id = "1"
-  User.create!(first_name:  first_name,
-  			   last_name:  last_name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               right_left_handed: hand,
-               skill_level_id: skill_level_id)
+  hand = false ? "right" : "left"
+  switch = !switch
+  skill_level_id = (n % 12) + 1
+  User.create!(first_name:              first_name,
+  			       last_name:               last_name,
+               email:                   email,
+               password:                password,
+               password_confirmation:   password,
+               right_left_handed:       hand,
+               skill_level_id:          skill_level_id)
 end
