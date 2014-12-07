@@ -190,10 +190,7 @@ input {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-top: 1px solid $gray-lighter;
-    &:last-child {
-      border-bottom: 1px solid $gray-lighter;
-    }
+    border-bottom: 1px solid $gray-lighter;
   }
 }
 
@@ -239,7 +236,24 @@ aside {
   cursor: pointer;
 }
 
+.pagination{
+  margin:0;
+  padding:0;
+}
 
+.table-hover tbody tr:hover > td {
+  cursor: pointer
+}
+
+.table th .asc + span{
+  @extend .glyphicon;
+  @extend .glyphicon-chevron-up;
+}
+
+.table th .desc + span{
+  @extend .glyphicon;
+  @extend .glyphicon-chevron-down;
+}
 
 
 

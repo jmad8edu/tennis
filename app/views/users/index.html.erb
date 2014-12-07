@@ -1,0 +1,25 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+<div class="panel panel-default">
+  <div class="panel-heading" style="text-align:center;"><%= will_paginate %></div>
+  <div class="table-responsive">
+	  <table class="table table-hover">
+	    <thead>
+	    	<tr>
+		    	<th><%= sortable "first_name" %>&nbsp;<span></span></th>
+		    	<th><%= sortable "last_name" %>&nbsp;<span></span></th>
+		    	<th><%= sortable "skill_level_id", "Skill level" %>&nbsp;<span></span></th>
+		    </tr>
+	    </thead>
+	    <tbody>
+	    	<% @users.each do |user| %>
+				<tr>
+					<td onclick="document.location = 'users/<%=user.id%>';"><%= user.first_name %></td>
+					<td onclick="document.location = 'users/<%=user.id%>';"><%= user.last_name %></td>
+					<td onclick="document.location = 'users/<%=user.id%>';"><%= user.skill_level.ntrp_rating %></td>
+				</tr>
+	    	<% end %>
+	    </tbody>
+	  </table>
+  </div>
+</div>

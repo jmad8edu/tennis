@@ -1,0 +1,17 @@
+<% provide(:title, 'Edit profile') %>
+<h1>Edit profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <%= render 'fields', f: f %>
+      <div class="row">
+      	<%= f.submit "Save", class: "btn btn-large btn-primary" %>
+      </div>
+      <div class="row">
+        <%= link_to "Cancel", @user, class: "btn btn-large btn-danger" %>
+	  </div>
+    <% end %>
+  </div>
+</div>

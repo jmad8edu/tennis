@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
-  has_one :skill_level
+  belongs_to :skill_level
   before_save :format_fields
   validates :first_name,  presence: true, length: { maximum: 50 }
   validates :last_name,  presence: true, length: { maximum: 50 }
@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_blank: true
   has_secure_password
   validate :phone_number_check
   validate :skill_level_check

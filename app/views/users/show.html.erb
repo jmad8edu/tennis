@@ -1,39 +1,49 @@
-<div class="container">
-	<div class="col-xs-1" style="padding-right:20px;">
+<div class="row">
+	<div class="col-xs-4 col-xs-offset-2" style="text-align:right;">
 		First Name:
 	</div>
-	<div class="col-xs-1">
+	<div class="col-xs-4">
 		<%= @user.first_name %>
 	</div>
 </div>
-<div class="container">
-	<div class="col-xs-1" style="padding-right:20px;">
+<div class="row">
+	<div class="col-xs-4 col-xs-offset-2" style="text-align:right;">
 		Last Name:</div>
-	<div class="col-xs-1">
+	<div class="col-xs-4">
 		<%= @user.last_name %>
 	</div>
 </div>
-<div class="container">
-	<div class="col-xs-1" style="padding-right:20px;">
+<div class="row">
+	<div class="col-xs-4 col-xs-offset-2" style="text-align:right;">
 		Email:
 	</div>
-	<div class="col-xs-1">
+	<div class="col-xs-4">
 		<%= @user.email %>
 	</div>
 </div>
-<div class="container">
-	<div class="col-xs-1" style="padding-right:20px;">
+<div class="row">
+	<div class="col-xs-4 col-xs-offset-2" style="text-align:right;">
 		Phone:
 	</div>
-	<div class="col-xs-1">
+	<div class="col-xs-4">
 		<%= @user.phone %>
 	</div>
 </div>
-<div class="container">
-	<div class="col-xs-1" style="padding-right:20px;">
+<div class="row">
+	<div class="col-xs-4 col-xs-offset-2" style="text-align:right;">
 		Court Address:
 	</div>
-	<div class="col-xs-1">
+	<div class="col-xs-4">
 		<%= @user.court_address %>
 	</div>
 </div>
+<div class="row">
+	<div class="col-xs-2 col-xs-offset-5" style="text-align:center;">
+		<%= link_to "Edit account", edit_user_path(current_user) %>
+	</div>
+</div>
+
+
+
+
+
