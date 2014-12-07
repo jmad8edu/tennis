@@ -1,0 +1,21 @@
+<div class="pagination-wrapper">
+	<% if params[:page] != "1" && @users.total_pages >= 10 %>
+		<div class="pagination">
+			<ul class="pagination">
+				<li class="prev previous_page">
+					<a rel="next" href="<%= "/users?page=1&direction=#{direction_param}&sort=#{sort_param}" %>">First</a>
+				</li>
+			</ul>
+		</div>
+	<% end %>
+	<%= will_paginate previous_label: "← Prev", inner_window: 2, outer_window: -1%>
+	<% if params[:page] != @users.total_pages.to_s && @users.total_pages >= 10 %>
+		<div class="pagination">
+			<ul class="pagination">
+				<li class="prev previous_page">
+					<a rel="prev" href="<%= "/users?page=#{@users.total_pages}&direction=#{direction_param}&sort=#{sort_param}" %>">Last</a>
+				</li>
+			</ul>
+		</div>
+	<% end %>
+</div>
