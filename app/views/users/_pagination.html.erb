@@ -1,18 +1,28 @@
 <div class="pagination-wrapper">
-	<% if params[:page] != "1" && @users.total_pages >= 10 %>
-		<div class="pagination">
+	<% if @users.total_pages >= 10 %>
+		<div class="pagination hidden-xs" style="float:left;">
 			<ul class="pagination">
-				<li class="prev previous_page">
+				<li class="prev previous_page <%= params[:page] != "1" ? "" : "disabled"%>">
 					<a rel="next" href="<%= "/users?page=1&direction=#{direction_param}&sort=#{sort_param}" %>">First</a>
 				</li>
 			</ul>
 		</div>
 	<% end %>
-	<%= will_paginate previous_label: "«", next_label: "»", inner_window: 2, outer_window: -1%>
-	<% if params[:page] != @users.total_pages.to_s && @users.total_pages >= 10 %>
-		<div class="pagination">
+	<%= will_paginate previous_label: "«", next_label: "»", inner_window: 2, outer_window: -1 %>
+	<% if @users.total_pages >= 10 %>
+		<div class="pagination hidden-xs" style="float:right;">
 			<ul class="pagination">
-				<li class="prev previous_page">
+				<li class="prev previous_page <%= params[:page] != @users.total_pages.to_s ? "" : "disabled"%>">
+					<a rel="prev" href="<%= "/users?page=#{@users.total_pages}&direction=#{direction_param}&sort=#{sort_param}" %>">Last</a>
+				</li>
+			</ul>
+		</div>
+		<div class="pagination visible-xs-block">
+			<ul class="pagination">
+				<li class="prev previous_page <%= params[:page] != "1" ? "" : "disabled"%>">
+					<a rel="next" href="<%= "/users?page=1&direction=#{direction_param}&sort=#{sort_param}" %>">First</a>
+				</li>
+				<li class="prev previous_page <%= params[:page] != @users.total_pages.to_s ? "" : "disabled"%>">
 					<a rel="prev" href="<%= "/users?page=#{@users.total_pages}&direction=#{direction_param}&sort=#{sort_param}" %>">Last</a>
 				</li>
 			</ul>

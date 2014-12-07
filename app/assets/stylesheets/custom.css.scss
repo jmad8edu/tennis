@@ -260,7 +260,7 @@ aside {
   @extend .glyphicon-chevron-down;
 }
 
-ul.pagination li.disabled a{
+ul.pagination li.disabled:not(.prev):not(.next) a{
   padding-right: 5px;
   padding-left: 5px;
 }

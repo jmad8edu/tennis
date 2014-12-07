@@ -17,10 +17,7 @@
 //= require angular
 //= require bootstrap/bootstrap-tooltip
 
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
-
-$(function () {
+$(document).ready(function () {
+  $('[data-toggle="popover"]').popover();
   $('[data-toggle="tooltip"]').tooltip()
 })
