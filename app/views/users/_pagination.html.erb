@@ -3,7 +3,7 @@
 		<div class="pagination hidden-xs" style="float:left;">
 			<ul class="pagination">
 				<li class="prev previous_page <%= params[:page] != "1" ? "" : "disabled"%>">
-					<a rel="next" href="<%= "/users?page=1&direction=#{direction_param}&sort=#{sort_param}" %>">First</a>
+					<a rel="prev" href="<%= "/#{controller.controller_name}?page=1&direction=#{direction_param}&sort=#{sort_param}" %>">First</a>
 				</li>
 			</ul>
 		</div>
@@ -12,8 +12,8 @@
 	<% if @users.total_pages >= 10 %>
 		<div class="pagination hidden-xs" style="float:right;">
 			<ul class="pagination">
-				<li class="prev previous_page <%= params[:page] != @users.total_pages.to_s ? "" : "disabled"%>">
-					<a rel="prev" href="<%= "/users?page=#{@users.total_pages}&direction=#{direction_param}&sort=#{sort_param}" %>">Last</a>
+				<li class="next next_page <%= params[:page] != @users.total_pages.to_s ? "" : "disabled"%>">
+					<a rel="next" href="<%= "/users?page=#{@users.total_pages}&direction=#{direction_param}&sort=#{sort_param}" %>">Last</a>
 				</li>
 			</ul>
 		</div>
