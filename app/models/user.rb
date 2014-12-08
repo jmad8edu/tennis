@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   belongs_to :skill_level
+  has_many :notifications_sent, class_name: "Notification", foreign_key: "sender_id"
+  has_many :notifications_received, class_name: "Notification", foreign_key: "receiver_id"
+  
   before_save :format_fields
   validates :first_name,  presence: true, length: { maximum: 50 }
   validates :last_name,  presence: true, length: { maximum: 50 }

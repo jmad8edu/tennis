@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205013118) do
+ActiveRecord::Schema.define(version: 20141208035325) do
+
+  create_table "notification_types", force: true do |t|
+    t.string   "description", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "notifications", force: true do |t|
+    t.integer  "receiver_id",                          null: false
+    t.integer  "sender_id",                            null: false
+    t.integer  "notification_type_id",                 null: false
+    t.integer  "arg_id",                               null: false
+    t.boolean  "notified",             default: false, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "notifications", ["notification_type_id"], name: "index_notifications_on_notification_type_id"
+  add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id"
+  add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id"
 
   create_table "skill_levels", force: true do |t|
     t.string   "skill_level"

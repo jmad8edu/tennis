@@ -1,0 +1,19 @@
+<li>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notifications <span class="caret"></span></a>
+	<ul class="dropdown-menu notifications" style="padding-bottom:0; padding-top:0;" role="menu" aria-labelledby="dLabel">
+		<div class="notification-heading hidden-xs">
+			<h4>Notifications</h4>
+			<h4 class="pull-right">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></h4>
+		</div>
+		<div class="notifications-wrapper">
+			<% current_user.notifications_received.each do |notification| %>
+				<div class="content">
+					<div class="notification-item">
+						<h4><%= notification.get_message %></h4>
+						<p><%= link_to "View", notification.sender %></p>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</ul>
+</li>

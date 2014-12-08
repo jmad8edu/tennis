@@ -37,8 +37,36 @@ User.create!(first_name:              "Justin",
              password_confirmation:   password,
              right_left_handed:       "right",
              skill_level_id:          5)
+NotificationType.create!(description: "Invitation Received")
+NotificationType.create!(description: "Invitation Accepted")
+NotificationType.create!(description: "Message Sent")
+Notification.create!(receiver_id:             1,
+                     sender_id:               2,
+                     notification_type_id:    1,
+                     arg_id:                  1)
+Notification.create!(receiver_id:             1,
+                     sender_id:               3,
+                     notification_type_id:    2,
+                     arg_id:                  1)
+Notification.create!(receiver_id:             1,
+                     sender_id:               4,
+                     notification_type_id:    3,
+                     arg_id:                  1)
+Notification.create!(receiver_id:             1,
+                     sender_id:               5,
+                     notification_type_id:    1,
+                     arg_id:                  1)
+Notification.create!(receiver_id:             1,
+                     sender_id:               6,
+                     notification_type_id:    2,
+                     arg_id:                  1)
+Notification.create!(receiver_id:             1,
+                     sender_id:               7,
+                     notification_type_id:    3,
+                     arg_id:                  1)
+
 switch = false;
-299.times do |n|
+99.times do |n|
   first_name  = Faker::Name.first_name
   last_name  = Faker::Name.last_name
   email = "example-#{n+1}@railstutorial.org"
