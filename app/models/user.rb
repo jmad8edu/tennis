@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   belongs_to :skill_level
   has_many :notifications_sent, class_name: "Notification", foreign_key: "sender_id"
   has_many :notifications_received, class_name: "Notification", foreign_key: "receiver_id"
+  has_many :wins, class_name: "Result", foreign_key: "winner_id"
+  has_many :losses, class_name: "Result", foreign_key: "loser_id"
+  has_many :inviter_matches, class_name: "Match", foreign_key: "inviter_id"
+  has_many :invitee_matches, class_name: "Match", foreign_key: "invitee_id"
   
   before_save :format_fields
   validates :first_name,  presence: true, length: { maximum: 50 }
@@ -72,5 +76,9 @@ class User < ActiveRecord::Base
 
   def name
     self.first_name + " " + self.last_name
+  end
+
+  def matches
+    inviter_matches + invitee_matches
   end
 end

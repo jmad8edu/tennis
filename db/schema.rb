@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208035325) do
+ActiveRecord::Schema.define(version: 20141208103937) do
+
+  create_table "matches", force: true do |t|
+    t.integer  "inviter_id",                       null: false
+    t.integer  "invitee_id",                       null: false
+    t.boolean  "inviter_accepted", default: true,  null: false
+    t.boolean  "invitee_accepted", default: false, null: false
+    t.datetime "scheduled_date",                   null: false
+    t.string   "location"
+    t.integer  "result_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "matches", ["invitee_id"], name: "index_matches_on_invitee_id"
+  add_index "matches", ["inviter_id"], name: "index_matches_on_inviter_id"
 
   create_table "notification_types", force: true do |t|
     t.string   "description", null: false
@@ -32,6 +47,17 @@ ActiveRecord::Schema.define(version: 20141208035325) do
   add_index "notifications", ["notification_type_id"], name: "index_notifications_on_notification_type_id"
   add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id"
   add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id"
+
+  create_table "results", force: true do |t|
+    t.integer  "winner_id",  null: false
+    t.integer  "loser_id",   null: false
+    t.string   "score",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "results", ["loser_id"], name: "index_results_on_loser_id"
+  add_index "results", ["winner_id"], name: "index_results_on_winner_id"
 
   create_table "skill_levels", force: true do |t|
     t.string   "skill_level"
