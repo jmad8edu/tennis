@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  inviter_id: 1
+  invitee_id: 1
+  inviter_accepted: false
+  invitee_accepted: false
+  scheduled_date: 2014-12-08 03:39:37
+  location: MyString
+  result_id: 1
+
+two:
+  inviter_id: 1
+  invitee_id: 1
+  inviter_accepted: false
+  invitee_accepted: false
+  scheduled_date: 2014-12-08 03:39:37
+  location: MyString
+  result_id: 1

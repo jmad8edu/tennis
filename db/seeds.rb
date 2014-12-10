@@ -40,30 +40,32 @@ User.create!(first_name:              "Justin",
 NotificationType.create!(description: "Invitation Received")
 NotificationType.create!(description: "Invitation Accepted")
 NotificationType.create!(description: "Message Sent")
-Notification.create!(receiver_id:             1,
-                     sender_id:               2,
-                     notification_type_id:    1,
-                     arg_id:                  1)
-Notification.create!(receiver_id:             1,
-                     sender_id:               3,
-                     notification_type_id:    2,
-                     arg_id:                  1)
-Notification.create!(receiver_id:             1,
-                     sender_id:               4,
-                     notification_type_id:    3,
-                     arg_id:                  1)
-Notification.create!(receiver_id:             1,
-                     sender_id:               5,
-                     notification_type_id:    1,
-                     arg_id:                  1)
-Notification.create!(receiver_id:             1,
-                     sender_id:               6,
-                     notification_type_id:    2,
-                     arg_id:                  1)
-Notification.create!(receiver_id:             1,
-                     sender_id:               7,
-                     notification_type_id:    3,
-                     arg_id:                  1)
+
+
+# Notification.create!(receiver_id:             1,
+#                      sender_id:               2,
+#                      notification_type_id:    1,
+#                      arg_id:                  1)
+# Notification.create!(receiver_id:             1,
+#                      sender_id:               3,
+#                      notification_type_id:    2,
+#                      arg_id:                  1)
+# Notification.create!(receiver_id:             1,
+#                      sender_id:               4,
+#                      notification_type_id:    3,
+#                      arg_id:                  1)
+# Notification.create!(receiver_id:             1,
+#                      sender_id:               5,
+#                      notification_type_id:    1,
+#                      arg_id:                  1)
+# Notification.create!(receiver_id:             1,
+#                      sender_id:               6,
+#                      notification_type_id:    2,
+#                      arg_id:                  1)
+# Notification.create!(receiver_id:             1,
+#                      sender_id:               7,
+#                      notification_type_id:    3,
+#                      arg_id:                  1)
 
 switch = false;
 99.times do |n|
@@ -81,3 +83,24 @@ switch = false;
                right_left_handed:       hand,
                skill_level_id:          skill_level_id)
 end
+
+Match.create!(inviter_id:       2,
+              invitee_id:       1,
+              scheduled_date:   "2015-1-08 09:30:00.000000",
+              location:         "Wherever")
+Match.create!(inviter_id:       3,
+              invitee_id:       1,
+              scheduled_date:   "2015-1-08 09:30:00.000000",
+              location:         "Wherever")
+Match.create!(inviter_id:       4,
+              invitee_id:       1,
+              scheduled_date:   "2015-1-08 09:30:00.000000",
+              location:         "Wherever")
+Match.create!(inviter_id:       5,
+              invitee_id:       1,
+              scheduled_date:   "2015-1-08 09:30:00.000000",
+              location:         "Wherever")
+Match.create!(inviter_id:       6,
+              invitee_id:       1,
+              scheduled_date:   "2015-1-08 09:30:00.000000",
+              location:         "Wherever")

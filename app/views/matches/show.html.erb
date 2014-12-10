@@ -1,0 +1,48 @@
+<h1>Match</h1>
+
+<div style="text-align:center;">
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+			Between 
+			<% you = @match.inviter == current_user ? @match.inviter : @match.invitee %>
+			<% opponent = @match.inviter == you ? @match.invitee : @match.inviter %>
+			<%= link_to "you", you %> 
+			and 
+			<%= link_to opponent.name, opponent %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<%= @match.scheduled_date.strftime('Date: %B %d at %I:%M %p') %>
+		</div>
+	</div>
+	<% if @match.location.gsub(/\s*/, "") != "" %>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4">
+				Location: <%= @match.location %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<div style="margin: auto; border: 1px solid; width:80%;">
+	<div style="margin: 10px auto; border: 1px solid; width: 80%">
+		<div>
+			<span>Justin Madsen</span>
+			<span class="pull-right">11/8 6:03pm</span>
+		</div>
+		<div style="padding:5px 10px;">
+			Hey wanna play some tennis
+		</div>
+	</div>
+
+	<div style="margin: 10px auto; border: 1px solid; width: 80%">
+		<div>
+			<span><%= opponent.name %></span>
+			<span class="pull-right">11/8 6:03pm</span>
+		</div>
+		<div style="padding:5px 10px;">
+			Sure I'll play
+		</div>
+	</div>
+</div>

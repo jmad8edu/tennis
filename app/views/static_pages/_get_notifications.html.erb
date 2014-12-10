@@ -1,0 +1,15 @@
+
+<div class="notification-heading hidden-xs">
+	<h4>Notifications</h4>
+	<h4 class="pull-right">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></h4>
+</div>
+<div class="notifications-wrapper">
+	<% current_user.notifications_received.each do |n| %>
+		<div class="content">
+			<%= link_to n.get_object_ref, class: "notification-item #{n.notified ? 'notification-read' : ''}" do %>
+				<h4 class="notification-message"><%= n.get_message %></h4>
+				<div class="notification-time"><%= n.get_date %></div>
+			<% end %>
+		</div>
+	<% end %>
+</div>

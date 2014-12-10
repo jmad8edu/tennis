@@ -37,11 +37,19 @@
 		<%= @user.court_address %>
 	</div>
 </div>
-<div class="row">
-	<div class="col-xs-2 col-xs-offset-5" style="text-align:center;">
-		<%= link_to "Edit account", edit_user_path(@user) %>
+<% if @user == current_user %>
+	<div class="row">
+		<div class="col-xs-2 col-xs-offset-5" style="text-align:center;">
+			<%= link_to "Edit account", edit_user_path(@user) %>
+		</div>
 	</div>
-</div>
+<% else %>
+	<div class="row">
+		<div class="col-xs-2 col-xs-offset-5" style="text-align:center;">
+			<%= link_to "Challenge", new_match_path + "?user=" + @user.id.to_s %>
+		</div>
+	</div>
+<% end %>
 
 
 

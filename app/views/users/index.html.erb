@@ -16,7 +16,7 @@
 				<tr>
 					<td onclick="document.location = 'users/<%=user.id%>';"><%= user.first_name %></td>
 					<td onclick="document.location = 'users/<%=user.id%>';"><%= user.last_name %></td>
-					<td onclick="document.location = 'users/<%=user.id%>';"><%= user.skill_level.ntrp_rating %></td>
+					<td onclick="document.location = 'users/<%=user.id%>';"><%= ntrp_rating user.skill_level_id %></td>
 				</tr>
 	    	<% end %>
 	    </tbody>

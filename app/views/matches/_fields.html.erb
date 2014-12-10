@@ -1,0 +1,13 @@
+<div class="row">
+  <%= f.label :invitee_id, "Opponent" %>
+  <%= f.hidden_field :invitee_id %>
+  <input value="<%=@match.invitee.name%>" disabled="disabled" class="form-control" type="text">
+</div>
+<div class="row">
+  <%= f.label :scheduled_date %>
+  <%= f.text_field :scheduled_date, class: 'form-control', placeholder: "Enter date" %>
+</div>
+<div class="row">
+  <%= f.label :location %>
+  <%= f.text_field :location, class: 'form-control', placeholder: "Enter location" %>
+</div>

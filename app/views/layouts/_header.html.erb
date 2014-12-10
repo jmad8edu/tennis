@@ -1,7 +1,6 @@
 <header>
   <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -12,13 +11,14 @@
         <%= link_to "Pickup-Tennis", root_path, id: "logo" %>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Home", root_path %></li>
           <% if logged_in? %>
             <li><%= link_to "Users", users_path %></li>
-            <%= render 'layouts/notifications' %>
+
+            <%= render "layouts/notifications_tab" %>
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -32,7 +32,7 @@
             <li><%= link_to "Log in", login_path %></li>
           <% end %>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+    </div>
   </nav>
 </header>
