@@ -53,6 +53,25 @@ class MatchesController < ApplicationController
     end
   end
 
+  def respond
+    @match = Match.find(params[:id])
+    response = params[:response]
+    if @match.inviter == current_user
+      @match.inviter_accepted = response
+    elsif @match.invitee == current_user
+      @match.invitee_accepted = response
+    else
+      redirect_to :back
+    end
+
+    if @match.save
+      flash[:success] = "Response sent!"
+    else
+      flash[:danger] = "Could not send response at this time."
+    end
+    redirect_to :back
+  end
+
   private
     def match_params
       params.require(:match).permit(:invitee_id, :scheduled_date, :location)

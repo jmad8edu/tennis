@@ -8,7 +8,7 @@
 		<div class="content">
 			<%= link_to n.get_object_ref, class: "notification-item #{n.notified ? 'notification-read' : ''}" do %>
 				<h4 class="notification-message"><%= n.get_message %></h4>
-				<div class="notification-time"><%= n.get_date %></div>
+				<div class="notification-time"><%= get_date(n.created_at) %></div>
 			<% end %>
 		</div>
 	<% end %>

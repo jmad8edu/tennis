@@ -1,48 +1,62 @@
 <h1>Match</h1>
 
-<div style="text-align:center;">
-	<div class="row">
-		<div class="col-xs-4 col-xs-offset-4">
-			Between 
-			<% you = @match.inviter == current_user ? @match.inviter : @match.invitee %>
-			<% opponent = @match.inviter == you ? @match.invitee : @match.inviter %>
-			<%= link_to "you", you %> 
-			and 
-			<%= link_to opponent.name, opponent %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-4 col-xs-offset-4">
-			<%= @match.scheduled_date.strftime('Date: %B %d at %I:%M %p') %>
-		</div>
-	</div>
-	<% if @match.location.gsub(/\s*/, "") != "" %>
-		<div class="row">
-			<div class="col-xs-4 col-xs-offset-4">
-				Location: <%= @match.location %>
+<div class="row">
+    <div class="col-sm-3 col-sm-offset-1 col-xs-12" style="text-align:center;">
+      	<h2 style="margin:0 0 10px 0;">Players</h2>
+      	<div class="row" >
+	      	<div class="col-sm-12 col-sm-offset-0 col-xs-5">
+	      		<%= link_to @match.inviter do %>
+		      		<div>
+		        		<%= image_tag "user.jpeg", style: "max-width:100%" %>
+		        	</div>
+		        	<div>
+		        		<%= @match.inviter.name %>
+		        	</div>
+		        <% end %>
+			</div>
+			<div class="col-sm-12 col-xs-2">Verses</div>
+	      	<div class="col-sm-12 col-xs-5" style="text-align:center;">
+	      		<%= link_to @match.invitee do %>
+		      		<div>
+		        		<%= image_tag "user.jpeg", style: "max-width:100%" %>
+		        	</div>
+		        	<div>
+		        		<%= @match.invitee.name %>
+		        	</div>
+		        <% end %>
 			</div>
 		</div>
-	<% end %>
-</div>
-
-<div style="margin: auto; border: 1px solid; width:80%;">
-	<div style="margin: 10px auto; border: 1px solid; width: 80%">
-		<div>
-			<span>Justin Madsen</span>
-			<span class="pull-right">11/8 6:03pm</span>
+    </div>
+	<div class="col-sm-7 col-xs-12" style="padding-top:20px;">
+		<div class="row">
+			<div class="col-xs-2">
+				<b>Date:</b>
+			</div>
+			<div class="col-xs-10">
+				<%= @match.scheduled_date.strftime('%B %d at %l:%M %p') %>
+			</div>
 		</div>
-		<div style="padding:5px 10px;">
-			Hey wanna play some tennis
-		</div>
-	</div>
-
-	<div style="margin: 10px auto; border: 1px solid; width: 80%">
-		<div>
-			<span><%= opponent.name %></span>
-			<span class="pull-right">11/8 6:03pm</span>
-		</div>
-		<div style="padding:5px 10px;">
-			Sure I'll play
-		</div>
+		<% if @match.location.gsub(/\s*/, "") != "" %>
+			<div class="row">
+				<div class="col-xs-2">
+					<b>Location:</b>
+				</div>
+				<div class="col-xs-10">
+					<%= @match.location %>
+				</div>
+			</div>
+		<% end %>
+			<div class="row">
+				<% if @match.can_accept?(current_user) %>
+					<div class="col-xs-6 col-md-3">
+						<%= button_to 'Accept', {controller: "matches", action: "respond", response: true, id: @match.id}, method: :post, class: "btn btn-success", style: "width:100px !important;" %>
+					</div>
+				<% end %>
+				<% if @match.can_reject?(current_user) %>
+					<div class="col-xs-6 col-md-3">
+						<%= button_to 'Reject', {controller: "matches", action: "respond", response: false, id: @match.id}, method: :post, class: "btn btn-danger", style: "width:100px !important;" %>
+					</div>
+				<% end %>
+			</div>
 	</div>
 </div>

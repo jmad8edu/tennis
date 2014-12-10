@@ -14,17 +14,6 @@ class Notification < ActiveRecord::Base
 	end
   end
 
-  def get_date
-  	dt = self.created_at
-  	if dt.to_date == Date.today
-		dt.strftime("%l:%M %P")
-	elsif dt.to_date == Date.yesterday
-		"yesterday"
-	else
-		dt.strftime("")
-	end
-  end
-
   def get_object_ref
 	 case self.notification_type_id
 		when 1;

@@ -14,15 +14,15 @@
 ActiveRecord::Schema.define(version: 20141208103937) do
 
   create_table "matches", force: true do |t|
-    t.integer  "inviter_id",                       null: false
-    t.integer  "invitee_id",                       null: false
-    t.boolean  "inviter_accepted", default: true,  null: false
-    t.boolean  "invitee_accepted", default: false, null: false
-    t.datetime "scheduled_date",                   null: false
+    t.integer  "inviter_id",                      null: false
+    t.integer  "invitee_id",                      null: false
+    t.boolean  "inviter_accepted", default: true
+    t.boolean  "invitee_accepted"
+    t.datetime "scheduled_date",                  null: false
     t.string   "location"
     t.integer  "result_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "matches", ["invitee_id"], name: "index_matches_on_invitee_id"

@@ -3,8 +3,8 @@ class CreateMatches < ActiveRecord::Migration
     create_table :matches do |t|
       t.integer :inviter_id, null: false, index: true
       t.integer :invitee_id, null: false, index: true
-      t.boolean :inviter_accepted, null: false, default: true
-      t.boolean :invitee_accepted, null: false, default: false
+      t.boolean :inviter_accepted, default: true
+      t.boolean :invitee_accepted
       t.datetime :scheduled_date, null: false
       t.string :location
       t.integer :result_id

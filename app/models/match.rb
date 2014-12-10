@@ -18,4 +18,24 @@ class Match < ActiveRecord::Base
 							 notification_type_id: 	2,
 							 arg_id: 				self.id)
 	end
+
+	def can_accept?(user)
+		if user == self.inviter
+			self.inviter_accepted == nil ? true : !self.inviter_accepted
+		elsif user == self.invitee
+			self.invitee_accepted == nil ? true : !self.invitee_accepted
+		else
+			false
+		end
+	end
+
+	def can_reject?(user)
+		if user == self.inviter
+			self.inviter_accepted == nil ? true : self.inviter_accepted
+		elsif user == self.invitee
+			self.invitee_accepted == nil ? true : self.invitee_accepted
+		else
+			false
+		end
+	end
 end
