@@ -47,7 +47,7 @@ NotificationType.create!(description: "Invitation Accepted")
 NotificationType.create!(description: "Message Sent")
 
 password = "password"
-print "Creating Players\t\t\t(1/100)\r"
+print "Creating Players\t\t\t(1/25)\r"
 User.create!(first_name:              "Justin",
              last_name:               "Madsen",
              email:                   "justinmadsen4@gmail.com",
@@ -56,8 +56,8 @@ User.create!(first_name:              "Justin",
              right_left_handed:       "right",
              skill_level_id:          5)
 switch = false;
-99.times do |n|
-  print "Creating Players\t\t\t(#{n+2}/100)\r"
+24.times do |n|
+  print "Creating Players\t\t\t(#{n+2}/25)\r"
   first_name  = Faker::Name.first_name
   last_name  = Faker::Name.last_name
   email = "example-#{n+1}@railstutorial.org"
@@ -72,7 +72,7 @@ switch = false;
                right_left_handed:       hand,
                skill_level_id:          skill_level_id)
 end
-print "Creating Players\t\t\t(100/100)\n"
+print "Creating Players\t\t\t(25/25)\n"
 
 
 print "Creating Matches\t\t\t(1/6)\r"
