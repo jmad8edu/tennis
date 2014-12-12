@@ -14,6 +14,10 @@ class MatchesController < ApplicationController
   def new
     @match = Match.new
     @match.invitee = User.find(params["user"])
+    @match.build_address
+    if logged_in? && current_user.address != nil
+      @match.address = current_user.address
+    end
   end
 
   def edit
@@ -21,6 +25,9 @@ class MatchesController < ApplicationController
   end
 
   def create
+    # date = params["datetime"]["date"]
+    # time = params["datetime"]["time"]
+    # params[:scheduled_date] = "#{date} #{time}".strip
     @match = Match.new(match_params)
     @match.inviter = current_user
     if @match.save
@@ -74,6 +81,7 @@ class MatchesController < ApplicationController
 
   private
     def match_params
-      params.require(:match).permit(:invitee_id, :scheduled_date, :location)
+      params.require(:match).permit(:invitee_id, :date, :time,
+        address_attributes: [:address_1, :address_2, :city, :state, :postal_code, :country])
     end
 end

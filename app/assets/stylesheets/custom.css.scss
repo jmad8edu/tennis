@@ -343,6 +343,21 @@ aside {
   background-color:white;
   border-radius:4px;
   padding:10px;
+  img{
+    width:80%;
+    max-width:220px;
+  }
+}
+
+/* date and time picker customization */
+.icon-chevron-up{
+  @extend .glyphicon;
+  @extend .glyphicon-chevron-up;
+}
+
+.icon-chevron-down{
+  @extend .glyphicon;
+  @extend .glyphicon-chevron-down; 
 }
 
 

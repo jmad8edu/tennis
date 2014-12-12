@@ -1,4 +1,4 @@
-== Pick-up tennis
+== Pickup tennis
 
 Tennis app for C 360
 

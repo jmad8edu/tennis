@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208103937) do
+ActiveRecord::Schema.define(version: 20141211082633) do
+
+  create_table "addresses", force: true do |t|
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "postal_code"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "matches", force: true do |t|
     t.integer  "inviter_id",                      null: false
@@ -19,7 +32,6 @@ ActiveRecord::Schema.define(version: 20141208103937) do
     t.boolean  "inviter_accepted", default: true
     t.boolean  "invitee_accepted"
     t.datetime "scheduled_date",                  null: false
-    t.string   "location"
     t.integer  "result_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -71,7 +83,6 @@ ActiveRecord::Schema.define(version: 20141208103937) do
     t.string   "last_name"
     t.string   "email"
     t.string   "phone"
-    t.string   "court_address"
     t.string   "right_left_handed"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false

@@ -1,0 +1,23 @@
+<div class="row">
+	<%= address.label :address_1, "Address 1" %>
+	<%= address.text_field :address_1, class: 'form-control', placeholder: "Enter address 1" %>
+</div>
+<div class="row">
+	<%= address.label :address_2, "Address 2" %>
+	<%= address.text_field :address_2, class: 'form-control', placeholder: "Enter address 2" %>
+</div>
+<div class="row">
+	<%= address.label :city, "City" %>
+	<%= address.text_field :city, class: 'form-control', placeholder: "Enter city" %>
+</div>
+<div class="row">
+	<div class="col-md-6" style="padding-left:0;">
+		<%= address.label :state, "State" %>
+		<%= address.select :state, Address.states, {}, {class: 'form-control'} %>
+	</div>
+	<div class="col-md-6" style="padding-right:0;">
+		<%= address.label :postal_code, "Postal code" %>
+		<%= address.text_field :postal_code, class: 'form-control', placeholder: "Enter postal code" %>
+	</div>
+	<%= address.hidden_field :country %>
+</div>

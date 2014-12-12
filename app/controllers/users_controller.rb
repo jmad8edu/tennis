@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 	def new
 		@user = User.new
 		@skill_levels = SkillLevel.all
+		@user.build_address
 	end
 
 	def create
@@ -47,8 +48,9 @@ class UsersController < ApplicationController
 	private
 
 		def user_params
-			params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,
-				:phone, :court_address, :skill_level_id, :right_left_handed)
+			params.require(:user).permit(:first_name, :last_name, :email, :password, 
+				:password_confirmation, :phone, :skill_level_id, :right_left_handed, 
+				address_attributes: [:address_1, :address_2, :city, :state, :postal_code, :country])
 		end
 
 	    def logged_in_user

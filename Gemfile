@@ -18,6 +18,10 @@ gem 'jbuilder',                             '2.2.3'
 gem 'sdoc',                                 '0.4.0', group: :doc
 gem 'angularjs-rails',                      '1.3.4'
 gem 'bootstrap-tooltip-rails',              '0.1'
+gem 'going_postal',                         '0.1.5'
+gem 'bootstrap-datepicker-rails',           '1.3.0.2'
+gem 'bootstrap-timepicker-rails-addon', :require => 'bootstrap-timepicker-rails-addon',
+                                        :git => 'git://github.com/ywjno/bootstrap-timepicker-rails-addon.git'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

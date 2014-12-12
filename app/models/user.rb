@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   belongs_to :skill_level
+  has_one :address, as: :addressable, dependent: :destroy
   has_many :notifications_sent, class_name: "Notification", foreign_key: "sender_id"
   has_many :notifications_received, class_name: "Notification", foreign_key: "receiver_id"
   has_many :wins, class_name: "Result", foreign_key: "winner_id"
@@ -20,6 +21,7 @@ class User < ActiveRecord::Base
   validate :phone_number_check
   validate :skill_level_check
   validate :right_left_handed_check
+  accepts_nested_attributes_for :address
 
   def right_left_handed_check
     if self.right_left_handed == nil || 

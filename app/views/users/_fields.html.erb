@@ -22,10 +22,7 @@
 	<%= f.label :phone, "Phone (optional)" %>
 	<%= f.text_field :phone, class: 'form-control', placeholder: "Enter phone number in format (xxx) xxx-xxxx" %>
 </div>
-<div class="row">
-	<%= f.label :court_address, "Court address (optional)" %>
-	<%= f.text_field :court_address, class: 'form-control', placeholder: "Enter court address" %>
-</div>
+
 <div class="row">
 	<div>
 		<%= label :skill_level_id, "Skill level" %>
@@ -50,4 +47,15 @@
 		<%= f.radio_button :right_left_handed, 'left', value: "left" %>
 		<%= f.label :right_left_handed, 'Left', value: "left" %>
 	</div>
+</div>
+
+<div style="border:1px solid;border-radius:4px;margin-bottom:20px;padding-top:10px;">
+	<div style="text-align:center;">
+		<h4 style="padding:0; margin:0;display:inline-block;">Home Court Address</h4>
+		<span class="glyphicon glyphicon-question-sign" tabindex="0" data-toggle="popover" data-trigger="focus" data-html="true" title="What's this for?" data-content="Tennis-pickup uses your home court address to find other players near you. It will also be used as a default location when challenging other players to a match!"></span>
+		<p style="font-size:12px;color:gray;padding:0 10px;">(For your privacy, please enter a tennis court address and not your home address)</p>
+	</div>
+	<%= f.fields_for :address do |address| %>
+		<%= render "shared/address_fields", address: address %>
+	<% end %>
 </div>
