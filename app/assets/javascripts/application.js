@@ -25,9 +25,9 @@ $(document).ready(function () {
   $('.date-picker').datepicker({
   	format: "m-d-yyyy",
   	startDate: "0d",
- 	weekStart: 1,
- 	forceParse: true,
- 	orientation: "top"
+   	weekStart: 1,
+   	forceParse: true,
+   	orientation: "top"
   });
   $('.time-picker').timepicker({
     minuteStep: 5,

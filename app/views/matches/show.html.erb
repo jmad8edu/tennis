@@ -7,7 +7,7 @@
 	      	<div class="col-sm-12 col-sm-offset-0 col-xs-5">
 	      		<%= link_to @match.inviter do %>
 		      		<div>
-		        		<%= image_tag "user.jpeg", style: "max-width:100%" %>
+		        		<%= gravatar_for @match.inviter, size: 150, class: "gravatar_match" %>
 		        	</div>
 		        	<div>
 		        		<%= @match.inviter.name %>
@@ -18,7 +18,7 @@
 	      	<div class="col-sm-12 col-xs-5" style="text-align:center;">
 	      		<%= link_to @match.invitee do %>
 		      		<div>
-		        		<%= image_tag "user.jpeg", style: "max-width:100%" %>
+		        		<%= gravatar_for @match.invitee, size: 150, class: "gravatar_match" %>
 		        	</div>
 		        	<div>
 		        		<%= @match.invitee.name %>
@@ -34,7 +34,15 @@
 					<b>Date:</b>
 				</div>
 				<div class="col-xs-6 col-md-10">
-					<%= @match.scheduled_date.strftime('%B %d at %l:%M %p') %>
+					<%= @match.scheduled_date.strftime('%B %d') %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2 col-xs-offset-3 col-md-2 col-md-offset-0">
+					<b>Time:</b>
+				</div>
+				<div class="col-xs-6 col-md-10">
+					<%= @match.scheduled_date.strftime('%l:%M %p') %>
 				</div>
 			</div>
 			<div class="row" style="margin:">
@@ -66,5 +74,10 @@
 				</div>
 			<% end %>
 		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2" style="margin-top:20px;background-color: rgb(214, 233, 198);border-radius:10px;border:2px solid rgb(60, 118, 61);height:500px;text-align:center;font-size:20px;color: rgb(60, 118, 61);padding:30px">
+		Coming soon: Trash talk your opponent by chatting over Pickup-Tennis!
 	</div>
 </div>

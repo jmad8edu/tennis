@@ -4,22 +4,13 @@
   <input value="<%=@match.invitee.name%>" disabled="disabled" class="form-control" type="text">
 </div>
 <div class="row">
-	<!-- <div class="col-xs-12" style="padding:0">
-		<%= f.label :scheduled_date %>
-	</div>
-	<div class="col-xs-6" style="padding:0">
-	  <%= text_field :datetime, :date, class: 'form-control date-picker', placeholder: "Enter date" %>
-	</div>
-	<div class="col-xs-5 col-xs-offset-1 bootstrap-timepicker" style="padding:0">
-	  <%= text_field :datetime, :time, class: 'form-control time-picker', placeholder: "Enter time" %>
-	</div> -->
 	<div class="col-xs-12" style="padding:0">
 		<%= f.label :scheduled_date %>
 	</div>
-	<div class="col-xs-6" style="padding:0">
+	<div class="col-xs-12 col-md-6" style="padding:0">
 	  <%= f.text_field :date, class: 'form-control date-picker', placeholder: "Enter date" %>
 	</div>
-	<div class="col-xs-5 col-xs-offset-1 bootstrap-timepicker" style="padding:0">
+	<div class="col-xs-12 col-md-5 col-md-offset-1 bootstrap-timepicker" style="padding:0">
 	  <%= f.text_field :time, :ignore_date => true, class: 'form-control time-picker', placeholder: "Enter time" %>
 	</div>
 </div>

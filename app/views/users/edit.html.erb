@@ -11,7 +11,11 @@
       </div>
       <div class="row">
         <%= link_to "Cancel", @user, class: "btn btn-large btn-danger" %>
-	  </div>
+	    </div>
     <% end %>
+    <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target=_blank>change</a>
+    </div>
   </div>
 </div>

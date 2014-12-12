@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_one :address, as: :addressable, dependent: :destroy
   has_many :notifications_sent, class_name: "Notification", foreign_key: "sender_id"
   has_many :notifications_received, class_name: "Notification", foreign_key: "receiver_id"
+  has_many :notifications_unread, -> {where notified: false}, class_name: "Notification", foreign_key: "receiver_id"
   has_many :wins, class_name: "Result", foreign_key: "winner_id"
   has_many :losses, class_name: "Result", foreign_key: "loser_id"
   has_many :inviter_matches, class_name: "Match", foreign_key: "inviter_id"

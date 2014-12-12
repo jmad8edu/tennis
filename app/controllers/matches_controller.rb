@@ -25,9 +25,6 @@ class MatchesController < ApplicationController
   end
 
   def create
-    # date = params["datetime"]["date"]
-    # time = params["datetime"]["time"]
-    # params[:scheduled_date] = "#{date} #{time}".strip
     @match = Match.new(match_params)
     @match.inviter = current_user
     if @match.save
@@ -73,6 +70,8 @@ class MatchesController < ApplicationController
 
     if @match.save
       flash[:success] = "Response sent!"
+      @match.response_notification(current_user, 
+        @match.inviter == current_user ? @match.invitee : @match.inviter, response)
     else
       flash[:danger] = "Could not send response at this time."
     end

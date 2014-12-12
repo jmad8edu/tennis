@@ -4,13 +4,13 @@ class Match < ActiveRecord::Base
 	belongs_to :inviter, class_name: "User"
 	belongs_to :invitee, class_name: "User"
 	after_create :create_notification
-	after_update :update_notification
 	before_save :save_proper_formats
+	after_initialize :set_date_and_time
 
 	validates :inviter_id,  presence: true
 	validates :invitee_id,  presence: true
-	validates :date, presence: true
-	validates :time, presence: true
+	validates :date, presence: true, on: :create
+	validates :time, presence: true, on: :create
 	validate :scheduled_date_check
   	accepts_nested_attributes_for :address
 
@@ -18,14 +18,21 @@ class Match < ActiveRecord::Base
   	attr_accessor :time
 
 	def save_proper_formats
+		self.set_date_and_time
 		self.scheduled_date = DateTime.strptime("#{self.date} #{self.time}", '%m-%d-%Y %H:%M %p')
 	end
 
+	def set_date_and_time
+		if !self.scheduled_date.blank?
+			self.date ||= self.scheduled_date.to_datetime.strftime("%m-%d-%Y")
+			self.time ||= self.scheduled_date.to_datetime.strftime("%H:%M %p")
+		end
+	end
+
 	def scheduled_date_check
-		if (self.date != nil) && (self.date != "") &&
-			(self.time != nil) && (self.time != "") &&
+		if (!self.date.blank?) && (!self.time.blank?) &&
 			DateTime.strptime("#{self.date} #{self.time}", '%m-%d-%Y %H:%M %p') == nil
-			errors.add(:scheduled_date, "can't be blank")
+			errors.add(:scheduled_date, "must be proper format")
 		end
 	end
 
@@ -36,10 +43,10 @@ class Match < ActiveRecord::Base
 							 arg_id: 				self.id)
 	end
 
-	def update_notification
-		Notification.create!(receiver_id: 			self.invitee.id,
-							 sender_id: 			self.inviter.id,
-							 notification_type_id: 	2,
+	def response_notification(sender, receiver, accepted)
+		Notification.create!(receiver_id: 			receiver.id,
+							 sender_id: 			sender.id,
+							 notification_type_id: 	accepted == "true" ? 2 : 3,
 							 arg_id: 				self.id)
 	end
 

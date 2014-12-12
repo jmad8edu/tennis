@@ -1,49 +1,50 @@
-<div class="row">
-	<div class="col-xs-4 col-xs-offset-2" style="text-align:right;">
-		First Name:
-	</div>
-	<div class="col-xs-4">
-		<%= @user.first_name %>
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-4 col-xs-offset-2" style="text-align:right;">
-		Last Name:</div>
-	<div class="col-xs-4">
-		<%= @user.last_name %>
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-4 col-xs-offset-2" style="text-align:right;">
-		Email:
-	</div>
-	<div class="col-xs-4">
-		<%= @user.email %>
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-4 col-xs-offset-2" style="text-align:right;">
-		Phone:
-	</div>
-	<div class="col-xs-4">
-		<%= @user.phone %>
-	</div>
-</div>
-<% if @user == current_user %>
-	<div class="row">
-		<div class="col-xs-2 col-xs-offset-5" style="text-align:center;">
-			<%= link_to "Edit account", edit_user_path(@user) %>
+<div class="row" style="width:70%;margin:auto;max-width:900px;min-width:300px;">
+  <aside class="col-xs-12 col-md-4" >
+    <section class="user_info">
+      <h1>
+      	<%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+    <section style="margin-top:0">
+		<div class="col-xs-12" style="padding:0">
+			<b>Email:</b>
 		</div>
-	</div>
-<% else %>
-	<div class="row">
-		<div class="col-xs-2 col-xs-offset-5" style="text-align:center;">
-			<%= link_to "Challenge", new_match_path + "?user=" + @user.id.to_s %>
+		<div class="col-xs-12" style="padding:0px 0px 5px 5px;">
+			<%= mail_to @user.email, @user.email %>
 		</div>
+		<div class="col-xs-12" style="padding:0">
+			<b>Dominant hand:</b>
+		</div>
+		<div class="col-xs-12" style="padding:0px 0px 5px 5px;">
+			<%= @user.right_left_handed.capitalize %>
+		</div>
+		<div class="col-xs-12" style="padding:0">
+			<b>Home court address:</b>
+		</div>
+		<div class="col-xs-12" style="padding:0px 0px 0px 5px;">
+			<%= @user.address.address_1 %>
+		</div>
+		<% if !@user.address.address_2.blank? %>
+			<div class="col-xs-12" style="padding:0px 0px 0px 5px;">
+				<%= @user.address.address_2 %>
+			</div>
+		<% end %>
+		<div class="col-xs-12" style="padding:0px 0px 5px 5px;">
+			<%= "#{@user.address.city}, #{@user.address.state} #{@user.address.postal_code}" %>
+		</div>
+		<div class="col-xs-12">
+			<% if @user == current_user %>
+				<%= link_to "Edit my account", edit_user_path, class: "btn btn-large btn-info" %>
+			<% else %>
+				<%= link_to "Challenge", new_match_path + "?user=" + @user.id.to_s, class: "btn btn-large btn-success" %>
+			<% end %>
+		</div>
+    </section>
+  </aside>
+  <div class="col-xs-12 col-md-8" style="margin-top:25px;">
+	<div class="row" style="margin-bottom:20px;background-color: rgb(214, 233, 198);border-radius:10px;border:2px solid rgb(60, 118, 61);height:500px;text-align:center;font-size:20px;color: rgb(60, 118, 61);padding:30px">
+		Coming soon: A feature to display users past wins and losses
 	</div>
-<% end %>
-
-
-
-
-
+  </div>
+</div>

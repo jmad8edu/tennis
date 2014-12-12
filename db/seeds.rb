@@ -37,6 +37,7 @@ SkillLevel.create!(skill_level: "Professional",
 				   ntrp_rating: "7.0")
 NotificationType.create!(description: "Invitation Received")
 NotificationType.create!(description: "Invitation Accepted")
+NotificationType.create!(description: "Invitation Rejected")
 NotificationType.create!(description: "Message Sent")
 
 password = "password"
