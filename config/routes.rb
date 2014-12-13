@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :matches
+  resources :users
 
   root 'static_pages#home'
   
-  resources :users
   
   get    'notifications'   	        => 'notifications#index'
   get 	 'about'   							    => 'static_pages#about'

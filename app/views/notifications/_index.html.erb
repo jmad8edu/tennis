@@ -1,6 +1,6 @@
-<% if @notes.any? %>
-	<% @notes.each do |n| %>
-		<li role="presentation" class="<%= !n.notified? ? '' : 'notification-read' %>" >
+<% if @notifications.any? %>
+	<% @notifications.each do |n| %>
+		<li role="presentation" class="<%= n.notified? ? '' : 'notification-read' %>" >
 			<div class="row">
 				<div class="col-xs-9">
 					<div class="row">

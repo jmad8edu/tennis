@@ -3,15 +3,15 @@
   <%= f.hidden_field :invitee_id %>
   <input value="<%=@match.invitee.name%>" disabled="disabled" class="form-control" type="text">
 </div>
-<div class="row">
-	<div class="col-xs-12" style="padding:0">
-		<%= f.label :scheduled_date %>
+<div class="row-trim">
+	<div class="col-xs-12 col-md-6">
+	  <%= f.label :date %>
+	  <%= f.text_field :date, class: 'form-control date-picker', readonly: "true", placeholder: "Enter date", style:"cursor:default;background-color:white;" %>
 	</div>
-	<div class="col-xs-12 col-md-6" style="padding:0">
-	  <%= f.text_field :date, class: 'form-control date-picker', placeholder: "Enter date" %>
-	</div>
-	<div class="col-xs-12 col-md-5 col-md-offset-1 bootstrap-timepicker" style="padding:0">
-	  <%= f.text_field :time, :ignore_date => true, class: 'form-control time-picker', placeholder: "Enter time" %>
+	<div class="col-xs-padding"></div>
+	<div class="col-xs-12 col-md-6 bootstrap-timepicker">
+		<%= f.label :time %>
+	  <%= f.text_field :time, :ignore_date => true, class: 'form-control time-picker', readonly: "true", placeholder: "Enter time", style:"cursor:default;background-color:white;" %>
 	</div>
 </div>
 <%= f.fields_for :address do |address| %>

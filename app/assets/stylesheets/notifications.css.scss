@@ -69,6 +69,14 @@
   }
 }
 
+.notification-hover{
+  &:hover{
+    .notification-badge{
+      background-color:#f88;
+    }
+  }
+}
+
 #notification-link {
 	text-align: center;
 }

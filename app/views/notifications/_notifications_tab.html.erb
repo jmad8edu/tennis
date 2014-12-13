@@ -1,9 +1,29 @@
 
 <li class="visible-xs-block">
-	<%= link_to "Notifications", notifications_path %>
+	<%= link_to notifications_path, class: "notification-hover" do %>
+		<span>Notifications</span>
+		<% if current_user.notifications_unread.size > 0 %>
+			<span class='notification-badge'>
+				<%= current_user.notifications_unread.size %>
+			</span>
+		<% end %>
+	<% end %>
 </li>
 <li class="dropdown hidden-xs">
-	<%= link_to "<span class='glyphicon glyphicon-bell'></span>".html_safe, {controller: "notifications", action: "index", offset: 0, remote: true}, {id:"notification-link", class:"dropdown-toggle", data: {toggle: "dropdown"}, role: "button", aria: {expanded: "false"}} %>
+	
+
+
+	<%= link_to (url_for({controller: "notifications", action: "index", offset: 0})), remote: true, id:"notification-link", class: "dropdown-toggle notification-hover", data: {toggle: "dropdown"}, role: "button", aria: {expanded: "false"} do %>
+
+		<span class='glyphicon glyphicon-bell'></span>
+		<% if current_user.notifications_unread.size > 0 %>
+			<span class='notification-badge'>
+				<%= current_user.notifications_unread.size %>
+			</span>
+		<% end %>
+	
+	<% end %>
+
 	<ul class="dropdown-menu notifications", style="height:300px;overflow:auto;" role="menu" aria-labelledby="dLabel">
 		<li class="notification-header">
 			<div>

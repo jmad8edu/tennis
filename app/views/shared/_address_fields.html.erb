@@ -20,5 +20,5 @@
 		<%= address.label :postal_code, "Postal code", style:"" %>
 		<%= address.text_field :postal_code, class: 'form-control', placeholder: "Enter postal code" %>
 	</div>
-	<%= address.hidden_field :country %>
+	<%= address.hidden_field :country, value: "USA" %>
 </div>

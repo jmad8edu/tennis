@@ -1,19 +1,8 @@
-/* color variables */
-
-//The following colors have been taken from http://www.colorcombos.com/color-schemes/172/ColorCombo172.html
-$yellow-green: #BED661; //YELLOW, GREEN, TACHA
-$green: #89E894; //GREEN, PASTEL GREEN
-$blue: #78D5E3; //AQUAMARINE BLUE, LIGHT BLUE, TEAL
-$light-blue: #7AF5F5; //LIGHT BLUE, SPRAY, TEAL
-$turquoise: #34DDDD; //LIGHT BLUE, TURQUOISE
-$blue-green: #93E2D5; //BLUE GREEN, RIPTIDE
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* mixins, variables, etc. */
 
-$grayMediumLight: #eaeaea;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -97,7 +86,7 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $grayMediumLight;
+  border-top: 1px solid #eaeaea;
   color: $gray-light;
   a {
     color: $gray;
@@ -147,7 +136,6 @@ aside {
 }
 
 .gravatar {
-  float: left;
   margin-right: 10px;
 }
 
@@ -195,6 +183,18 @@ input {
 }
 
 /* miscellaneous */
+
+.notification-badge {
+  @extend .badge;
+  background-color:$brand-danger;
+  position:relative;top:-2px;
+  &:hover{
+    background-color:#f88;
+  }
+}
+
+#notification-link{
+}
 
 .debug_dump {
   clear: both;
@@ -256,6 +256,10 @@ input {
 .icon-chevron-down{
   @extend .glyphicon;
   @extend .glyphicon-chevron-down; 
+}
+
+.date-picker{
+  cursor: default;
 }
 
 

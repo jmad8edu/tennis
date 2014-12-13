@@ -2,21 +2,14 @@
 <h1>Log in</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3 col-xs-12">
     <%= form_for(:session, url: login_path) do |f| %>
-      <div class="row">
-        <%= f.label :email %>
-        <%= f.text_field :email, class: 'form-control', placeholder: "Enter email address" %>
-      </div>
-      <div class="row">
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control', placeholder: "Enter password" %>
-      </div>
-      <div class="row">
-        <%= f.submit "Log in", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+      <%= render "fields", f: f %>
 
+	  <div class="row">
+	    <%= f.submit "Log in", class: "btn btn-primary" %>
+	  </div>
+    <% end %>
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
 </div>

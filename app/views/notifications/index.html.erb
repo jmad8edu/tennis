@@ -1,2 +1,29 @@
 <% provide(:title, 'Notifications') %>
-index.html.erb
+
+<h1>Notifications</h1>
+
+<div class="row">
+	<div class="col-xs-12 col-md-8 col-md-offset-2">
+		<% @notifications.each do |n| %>
+			
+				<div class="row <%= n.notified? ? '' : 'notification-read' %>">
+					<div class="col-xs-3">
+					</div>
+					<div class="col-xs-2">
+						<%= link_to n.sender do %>
+							<%= gravatar_for n.sender, size: 60 %>
+						<% end %>
+					</div>
+					<div class="col-xs-5">
+						<%= link_to n.get_object_ref do %>
+							<%= n.get_message %>
+						<% end %>
+					</div>
+					<div class="col-xs-2">
+						<%= get_date(n.created_at) %>
+					</div>
+				</div>
+			
+		<% end %>
+	</div>
+</div>
