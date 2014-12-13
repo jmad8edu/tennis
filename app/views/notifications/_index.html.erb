@@ -1,0 +1,31 @@
+<% if @notes.any? %>
+	<% @notes.each do |n| %>
+		<li role="presentation" class="<%= !n.notified? ? '' : 'notification-read' %>" >
+			<div class="row">
+				<div class="col-xs-9">
+					<div class="row">
+						<%= link_to n.sender do %>
+							<div class="col-xs-2 notification-gravatar">
+								<%= gravatar_for n.sender, size: 30 %>
+							</div>
+						<% end %>
+						<%= link_to n.get_object_ref do %>
+							<div class="col-xs-10 notification-message">
+								<%= n.get_message %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+				<div class="col-xs-3 notification-time">
+					<div><%= get_date(n.created_at) %></div>
+				</div>
+			</div>
+		</li>
+	<% end %>
+	<% if @more %>
+		<li role="presentation" class="notification-removable">
+			<%= link_to "More notifications", {controller: "notifications", action: "index", offset: params[:offset].to_i + 10, remote: true}, {id:"notification-link", class: "dropdown-toggle", data: {toggle: "dropdown"}, role: "button", aria: {expanded: "false"}} %>
+		</li>
+		<div id="notifications-container"></div>
+	<% end %>		
+<% end %>

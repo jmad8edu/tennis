@@ -14,8 +14,12 @@
 	    </div>
     <% end %>
     <div class="gravatar_edit">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target=_blank>change</a>
+      <div>
+        <%= gravatar_for @user, class: "gravatar_edit" %>
+      </div>
+      <div>
+        <a href="http://gravatar.com/emails" target="_blank">Change</a>
+      </div>
     </div>
   </div>
 </div>

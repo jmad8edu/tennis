@@ -1,0 +1,8 @@
+$(".notification-header").show();
+$("<%= j (render 'index') %>").insertAfter("#notifications-container");
+$("#notifications-container").remove();
+$("#notification-link").removeAttr("data-remote");
+$("#notification-link").removeData("remote");
+$("#notification-link").removeAttr("id");
+$(".notification-removable-temp").remove();
+$(".notification-removable").toggleClass('notification-removable').toggleClass('notification-removable-temp');

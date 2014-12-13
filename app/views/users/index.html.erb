@@ -6,6 +6,7 @@
 	  <table class="table table-hover">
 	    <thead>
 	    	<tr>
+	    		<th style="width:40px"></th>
 		    	<th><%= sortable "first_name" %>&nbsp;<span></span></th>
 		    	<th><%= sortable "last_name" %>&nbsp;<span></span></th>
 		    	<th><%= sortable "skill_level_id", "Skill level" %>&nbsp;<span></span></th>
@@ -13,10 +14,11 @@
 	    </thead>
 	    <tbody>
 	    	<% @users.each do |user| %>
-				<tr>
-					<td onclick="document.location = 'users/<%=user.id%>';"><%= user.first_name %></td>
-					<td onclick="document.location = 'users/<%=user.id%>';"><%= user.last_name %></td>
-					<td onclick="document.location = 'users/<%=user.id%>';"><%= ntrp_rating user.skill_level_id %></td>
+				<tr onclick="document.location = 'users/<%=user.id%>';">
+					<td><%= gravatar_for user, size:40 %> </td> 
+					<td><%= user.first_name %></td>
+					<td><%= user.last_name %></td>
+					<td><%= ntrp_rating user.skill_level_id %></td>
 				</tr>
 	    	<% end %>
 	    </tbody>

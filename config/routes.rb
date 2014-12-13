@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   resources :users
   
-  get    'get_notifications'   	    => 'static_pages#get_notifications'
+  get    'notifications'   	        => 'notifications#index'
   get 	 'about'   							    => 'static_pages#about'
   get 	 'contact' 							    => 'static_pages#contact'
   get    'signup'  							    => 'users#new'
