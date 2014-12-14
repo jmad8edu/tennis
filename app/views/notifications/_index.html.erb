@@ -5,11 +5,11 @@
 				<div class="col-xs-9">
 					<div class="row">
 						<%= link_to n.sender do %>
-							<div class="col-xs-2 notification-gravatar">
+							<div class="col-xs-2 notification-tab-gravatar">
 								<%= gravatar_for n.sender, size: 30 %>
 							</div>
 						<% end %>
-						<%= link_to n.get_object_ref do %>
+						<%= link_to n.notifiable do %>
 							<div class="col-xs-10 notification-message">
 								<%= n.get_message %>
 							</div>
@@ -17,14 +17,14 @@
 					</div>
 				</div>
 				<div class="col-xs-3 notification-time">
-					<div><%= get_date(n.created_at) %></div>
+					<div><%= get_time_then_date(n.created_at) %></div>
 				</div>
 			</div>
 		</li>
 	<% end %>
 	<% if @more %>
 		<li role="presentation" class="notification-removable">
-			<%= link_to "More notifications", {controller: "notifications", action: "index", offset: params[:offset].to_i + 10, remote: true}, {id:"notification-link", class: "dropdown-toggle", data: {toggle: "dropdown"}, role: "button", aria: {expanded: "false"}} %>
+			<%= link_to "Load more", {controller: "notifications", action: "index", offset: params[:offset].to_i + 10, remote: true}, {id:"notification-tab-more-link", class: "dropdown-toggle", data: {toggle: "dropdown"}, role: "button", aria: {expanded: "false"}} %>
 		</li>
 		<div id="notifications-container"></div>
 	<% end %>		

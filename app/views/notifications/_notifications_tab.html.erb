@@ -1,6 +1,6 @@
 
 <li class="visible-xs-block">
-	<%= link_to notifications_path, class: "notification-hover" do %>
+	<%= link_to notifications_path, class: "notification-tab-link" do %>
 		<span>Notifications</span>
 		<% if current_user.notifications_unread.size > 0 %>
 			<span class='notification-badge'>
@@ -10,10 +10,7 @@
 	<% end %>
 </li>
 <li class="dropdown hidden-xs">
-	
-
-
-	<%= link_to (url_for({controller: "notifications", action: "index", offset: 0})), remote: true, id:"notification-link", class: "dropdown-toggle notification-hover", data: {toggle: "dropdown"}, role: "button", aria: {expanded: "false"} do %>
+	<%= link_to (url_for({controller: "notifications", action: "index", offset: 0})), remote: true, id:"notification-tab-more-link", class: "dropdown-toggle notification-tab-link notification-tab-dropdown", role: "button", aria: {expanded: "false"} do %>
 
 		<span class='glyphicon glyphicon-bell'></span>
 		<% if current_user.notifications_unread.size > 0 %>
@@ -24,8 +21,8 @@
 	
 	<% end %>
 
-	<ul class="dropdown-menu notifications", style="height:300px;overflow:auto;" role="menu" aria-labelledby="dLabel">
-		<li class="notification-header">
+	<ul class="dropdown-menu notifications-tab" id="notification-tab-click", style="height:300px;overflow:auto;" role="menu" aria-labelledby="dLabel">
+		<li class="notification-tab-header">
 			<div>
 				<div>
 					<h4>Notifications</h4>
@@ -37,7 +34,7 @@
 				</div>
 			</div>
 		</li>
-		<div class="notification-loading" id="notifications-container">
+		<div class="notification-tab-loading" id="notifications-container">
 			<%= image_tag "ajax-loader.gif" %>
 			<div>
 				Loading...

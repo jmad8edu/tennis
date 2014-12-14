@@ -22,6 +22,8 @@ gem 'going_postal',                         '0.1.5'
 gem 'bootstrap-datepicker-rails',           '1.3.0.2'
 gem 'bootstrap-timepicker-rails-addon', :require => 'bootstrap-timepicker-rails-addon',
                                         :git => 'git://github.com/ywjno/bootstrap-timepicker-rails-addon.git'
+gem 'browser-timezone-rails'
+gem 'jquery-turbolinks',                    '2.1.0'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

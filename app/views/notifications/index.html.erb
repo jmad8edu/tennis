@@ -4,26 +4,32 @@
 
 <div class="row">
 	<div class="col-xs-12 col-md-8 col-md-offset-2">
+		<%= link_to "Mark all as read", (url_for({controller: "notifications", action: "mark_read"})), remote: true, id: "notification-mark-read-link" %>
+		<% date = nil %>
 		<% @notifications.each do |n| %>
-			
-				<div class="row <%= n.notified? ? '' : 'notification-read' %>">
-					<div class="col-xs-3">
-					</div>
-					<div class="col-xs-2">
-						<%= link_to n.sender do %>
-							<%= gravatar_for n.sender, size: 60 %>
-						<% end %>
-					</div>
-					<div class="col-xs-5">
-						<%= link_to n.get_object_ref do %>
-							<%= n.get_message %>
-						<% end %>
-					</div>
-					<div class="col-xs-2">
+			<% if date != n.created_at.to_date %>
+				<div class="row notification-date">
+					<div class="col-xs-12">
 						<%= get_date(n.created_at) %>
 					</div>
 				</div>
-			
+				<% date = n.created_at.to_date %>
+			<% end %>
+			<div class="row notification-item <%= n.notified? ? '' : 'notification-read' %>">
+				<div class="col-xs-2 notification-gravatar">
+					<%= link_to n.sender do %>
+						<%= gravatar_for n.sender, size: 40 %>
+					<% end %>
+				</div>
+				<div class="col-xs-8 notification-message">
+					<%= link_to n.notifiable do %>
+						<%= n.get_message %>
+					<% end %>
+				</div>
+				<div class="col-xs-2 notification-time">
+					<%= get_time(n.created_at) %>
+				</div>
+			</div>
 		<% end %>
 	</div>
 </div>

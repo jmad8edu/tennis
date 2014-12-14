@@ -1,5 +1,6 @@
 class Match < ActiveRecord::Base
  	has_one :address, as: :addressable, dependent: :destroy
+ 	has_many :notifications, as: :notifiable, dependent: :destroy
 	belongs_to :result
 	belongs_to :inviter, class_name: "User"
 	belongs_to :invitee, class_name: "User"
@@ -40,14 +41,14 @@ class Match < ActiveRecord::Base
 		Notification.create!(receiver_id: 			self.invitee.id,
 							 sender_id: 			self.inviter.id,
 							 notification_type_id: 	1,
-							 arg_id: 				self.id)
+							 notifiable: 			self)
 	end
 
-	def response_notification(sender, receiver, accepted)
+	def response_notification(receiver, sender, accepted)
 		Notification.create!(receiver_id: 			receiver.id,
 							 sender_id: 			sender.id,
 							 notification_type_id: 	accepted == "true" ? 2 : 3,
-							 arg_id: 				self.id)
+							 notifiable: 			self)
 	end
 
 	def can_accept?(user)

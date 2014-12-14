@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211082633) do
+ActiveRecord::Schema.define(version: 20141214055648) do
 
   create_table "addresses", force: true do |t|
     t.string   "address_1"
@@ -50,12 +50,14 @@ ActiveRecord::Schema.define(version: 20141211082633) do
     t.integer  "receiver_id",                          null: false
     t.integer  "sender_id",                            null: false
     t.integer  "notification_type_id",                 null: false
-    t.integer  "arg_id",                               null: false
     t.boolean  "notified",             default: false, null: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
   end
 
+  add_index "notifications", ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
   add_index "notifications", ["notification_type_id"], name: "index_notifications_on_notification_type_id"
   add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id"
   add_index "notifications", ["sender_id"], name: "index_notifications_on_sender_id"

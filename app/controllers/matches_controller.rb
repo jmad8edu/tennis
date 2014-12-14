@@ -4,10 +4,7 @@ class MatchesController < ApplicationController
   end
 
   def show
-    Notification.where(arg_id: params[:id], notified: false).each do |n|
-      n.notified = true
-      n.save
-    end
+    current_user.notifications_unread.update_all(notified: true)
     @match = Match.find(params[:id])
   end
 
@@ -70,8 +67,8 @@ class MatchesController < ApplicationController
 
     if @match.save
       flash[:success] = "Response sent!"
-      @match.response_notification(current_user, 
-        @match.inviter == current_user ? @match.invitee : @match.inviter, response)
+      @match.response_notification( @match.inviter == current_user ? @match.invitee : @match.inviter, 
+        current_user, response)
     else
       flash[:danger] = "Could not send response at this time."
     end

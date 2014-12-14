@@ -1,4 +1,5 @@
 class Notification < ActiveRecord::Base
+  belongs_to :notifiable, polymorphic: true
   belongs_to :receiver, class_name: "User"
   belongs_to :sender, class_name: "User"
   has_one :notification_type
@@ -11,17 +12,6 @@ class Notification < ActiveRecord::Base
 			"#{self.sender.name} accepted your invitation!"
 		when 3;
 			"#{self.sender.name} rejected your invitation"
-	end
-  end
-
-  def get_object_ref
-	 case self.notification_type_id
-		when 1;
-			return Match.find(self.arg_id)
-		when 2;
-			return Match.find(self.arg_id)
-		when 3;
-			return Match.find(self.arg_id)
 	end
   end
 end

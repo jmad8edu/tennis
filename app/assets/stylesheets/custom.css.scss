@@ -68,6 +68,7 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
+  margin-left: 10px;
   font-size: 1.7em;
   color: white;
   text-transform: uppercase;
@@ -191,9 +192,6 @@ input {
   &:hover{
     background-color:#f88;
   }
-}
-
-#notification-link{
 }
 
 .debug_dump {

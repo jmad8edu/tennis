@@ -1,8 +1,9 @@
-$(".notification-header").show();
+$(".notification-tab-header").show();
 $("<%= j (render 'index') %>").insertAfter("#notifications-container");
 $("#notifications-container").remove();
-$("#notification-link").removeAttr("data-remote");
-$("#notification-link").removeData("remote");
-$("#notification-link").removeAttr("id");
+$("#notification-tab-more-link").removeAttr("data-remote");
+$("#notification-tab-more-link").removeData("remote");
+$("#notification-tab-more-link").removeAttr("href");
+$("#notification-tab-more-link").removeAttr("id");
 $(".notification-removable-temp").remove();
 $(".notification-removable").toggleClass('notification-removable').toggleClass('notification-removable-temp');
