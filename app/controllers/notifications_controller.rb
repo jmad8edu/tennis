@@ -1,8 +1,16 @@
 class NotificationsController < ApplicationController
   def mark_read
     respond_to do |format|
-      Notification.where(receiver: current_user).update_all(notified: true)
-      format.js
+      id = params[:id]
+      if !id.blank?
+        @notification = Notification.find(id)
+        @notification.update(notified: !@notification.notified)
+        format.js
+      else
+        Notification.where(receiver: current_user).update_all(notified: true)
+        format.js {render 'notifications/mark_all_read.js.erb'}
+      end
+        
     end
   end
 

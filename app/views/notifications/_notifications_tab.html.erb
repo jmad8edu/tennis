@@ -3,7 +3,7 @@
 	<%= link_to notifications_path, class: "notification-tab-link" do %>
 		<span>Notifications</span>
 		<% if current_user.notifications_unread.size > 0 %>
-			<span class='notification-badge'>
+			<span class='notification-badge' id="notification-count-responsive">
 				<%= current_user.notifications_unread.size %>
 			</span>
 		<% end %>
@@ -14,7 +14,7 @@
 
 		<span class='glyphicon glyphicon-bell'></span>
 		<% if current_user.notifications_unread.size > 0 %>
-			<span class='notification-badge'>
+			<span class='notification-badge' id="notification-count-tab">
 				<%= current_user.notifications_unread.size %>
 			</span>
 		<% end %>

@@ -4,7 +4,7 @@ class MatchesController < ApplicationController
   end
 
   def show
-    current_user.notifications_unread.update_all(notified: true)
+    current_user.notifications_unread.where(notifiable_id: params[:id]).update_all(notified: true)
     @match = Match.find(params[:id])
   end
 

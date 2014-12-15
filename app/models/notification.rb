@@ -14,4 +14,12 @@ class Notification < ActiveRecord::Base
 			"#{self.sender.name} rejected your invitation"
 	end
   end
+
+  def self.read
+	where(notified: true)
+  end
+
+  def self.unread
+  	where(notified: false)
+  end
 end
