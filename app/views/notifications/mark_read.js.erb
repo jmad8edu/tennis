@@ -8,6 +8,7 @@ var elements = $(".notification-badge");
 if (elements.length == 0){
 	if (<%= !@notification.notified %>){
 		$("<span class='notification-badge' style='margin-left:4px;'>1</span>").insertAfter(".notification-tab-link > span");
+		$("#notification-mark-read-link").show();
 	}
 }else{
 	for (i = 0; i < elements.size(); i++){
@@ -16,6 +17,7 @@ if (elements.length == 0){
 		if (<%= @notification.notified %>){
 			if (count == 1){
 				element.remove();
+				$("#notification-mark-read-link").hide();
 			}else{
 				element.text(count - 1);
 			}

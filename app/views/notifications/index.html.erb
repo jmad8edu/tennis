@@ -4,9 +4,7 @@
 
 <div class="row">
 	<div class="col-xs-12 col-md-8 col-md-offset-2">
-		<% if @notifications.unread.size > 0 %>
-			<%= link_to "Mark all as read", (url_for({controller: "notifications", action: "mark_read"})), remote: true, id: "notification-mark-read-link" %>
-		<% end %>
+			<%= link_to "Mark all as read", (url_for({controller: "notifications", action: "mark_read"})), remote: true, id: "notification-mark-read-link", style: "display:#{@notifications.unread.size > 0 ? 'block' : 'none'}" %>
 		<% date = nil %>
 		<% @notifications.each do |n| %>
 			<% if date != n.created_at.to_date %>

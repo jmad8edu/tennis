@@ -1,3 +1,6 @@
+
+$("div.glyphicon-ok-circle").toggleClass("glyphicon-remove-circle").toggleClass("glyphicon-ok-circle");
+$("div.glyphicon-remove-circle").attr("data-original-title", "Mark as unread");
 $(".notification-read").removeClass("notification-read");
 $(".notification-badge").remove();
-$("#notification-mark-read-link").remove();
+$("#notification-mark-read-link").hide();
