@@ -1,7 +1,7 @@
 $("#<%= @notification.id %>_notification").toggleClass("notification-read");
 $("#<%= @notification.id %>_notification div.glyphicon").toggleClass("glyphicon-remove-circle").toggleClass("glyphicon-ok-circle");
-$("#<%= @notification.id %>_notification div.glyphicon-ok-circle").attr("data-original-title", "Mark as unread");
-$("#<%= @notification.id %>_notification div.glyphicon-remove-circle").attr("data-original-title", "Mark as read");
+$("#<%= @notification.id %>_notification div.glyphicon-ok-circle").attr("data-original-title", "Mark as read");
+$("#<%= @notification.id %>_notification div.glyphicon-remove-circle").attr("data-original-title", "Mark as unread");
 
 if (<%= @notification.notified %>){
 	$("#notification-count-tab").text(parseInt($("#notification-count-tab").text()) - 1);
