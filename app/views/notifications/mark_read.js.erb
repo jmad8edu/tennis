@@ -1,12 +1,26 @@
-$("#<%= @notification.id %>_notification").toggleClass("notification-read");
-$("#<%= @notification.id %>_notification div.glyphicon").toggleClass("glyphicon-remove-circle").toggleClass("glyphicon-ok-circle");
-$("#<%= @notification.id %>_notification div.glyphicon-ok-circle").attr("data-original-title", "Mark as read");
-$("#<%= @notification.id %>_notification div.glyphicon-remove-circle").attr("data-original-title", "Mark as unread");
+$(".<%= @notification.id %>-notification").toggleClass("notification-read");
+$(".<%= @notification.id %>-notification div.glyphicon").toggleClass("glyphicon-remove-circle").toggleClass("glyphicon-ok-circle");
+$(".<%= @notification.id %>-notification div.glyphicon-ok-circle").attr("data-original-title", "Mark as read");
+$(".<%= @notification.id %>-notification div.glyphicon-remove-circle").attr("data-original-title", "Mark as unread");
 
-if (<%= @notification.notified %>){
-	$("#notification-count-tab").text(parseInt($("#notification-count-tab").text()) - 1);
-	$("#notification-count-responsive").text(parseInt($("#notification-count-responsive").text()) - 1);
+var elements = $(".notification-badge");
+
+if (elements.length == 0){
+	if (<%= !@notification.notified %>){
+		$("<span class='notification-badge' style='margin-left:4px;'>1</span>").insertAfter(".notification-tab-link > span");
+	}
 }else{
-	$("#notification-count-tab").text(parseInt($("#notification-count-tab").text()) + 1);
-	$("#notification-count-responsive").text(parseInt($("#notification-count-responsive").text()) + 1);
+	for (i = 0; i < elements.size(); i++){
+		var element = $(elements[i]);
+		var count = parseInt(element.text());
+		if (<%= @notification.notified %>){
+			if (count == 1){
+				element.remove();
+			}else{
+				element.text(count - 1);
+			}
+		}else{
+			element.text(count+1);
+		}
+	}
 }

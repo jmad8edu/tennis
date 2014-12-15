@@ -17,7 +17,7 @@
 				</div>
 				<% date = n.created_at.to_date %>
 			<% end %>
-			<div id="<%= n.id %>_notification" class="row notification-item <%= n.notified? ? '' : 'notification-read' %>">
+			<div class="row notification-item <%= n.id %>-notification <%= n.notified? ? '' : 'notification-read' %>">
 				<div class="col-xs-2 notification-gravatar">
 					<%= link_to (url_for({controller:"notifications", action: "mark_read", id: n.id})), remote: true do %>
 						<div class="notification-read-link pull-left hidden-xs" style="display:inline:block;">
