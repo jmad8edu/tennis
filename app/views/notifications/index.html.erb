@@ -22,9 +22,9 @@
 					<%= link_to (url_for({controller:"notifications", action: "mark_read", id: n.id})), remote: true do %>
 						<div class="notification-read-link pull-left hidden-xs" style="display:inline:block;">
 							<% if n.notified %>
-								<div data-toggle="tooltip" title="Mark as read" class="glyphicon glyphicon-ok-circle"></div>
-							<% else %>
 								<div data-toggle="tooltip" title="Mark as unread" class="glyphicon glyphicon-remove-circle"></div>
+							<% else %>
+								<div data-toggle="tooltip" title="Mark as read" class="glyphicon glyphicon-ok-circle"></div>
 							<% end %>
 						</div>
 					<% end %>
