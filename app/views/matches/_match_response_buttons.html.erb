@@ -1,0 +1,20 @@
+<% if @match.user_is_particpant?(current_user) %>
+	<div class="row">
+		<div class="col-xs-12 text-alert">
+			<% if @match.scheduled_date >= DateTime.now %>
+				<% if @match.can_accept?(current_user) %>
+					<div style="display:inline-block;">
+						<%= button_to 'Accept', {controller: "matches", action: "respond", response: true, id: @match.id}, method: :post, class: "btn btn-success", style: "width:100px !important;" %>
+					</div>
+				<% end %>
+				<% if @match.can_decline?(current_user) %>
+					<div style="display:inline-block;">
+						<%= button_to 'Decline', {controller: "matches", action: "respond", response: false, id: @match.id}, method: :post, class: "btn btn-danger", style: "width:100px !important;" %>
+					</div>
+				<% end %>
+			<% else %>
+					<span class="text-danger">Tennis match is past date. Report win/loss here!</span>
+			<% end %> <!-- if @match.scheduled_date >= DateTime.now -->
+		</div>
+	</div>
+<% end %> <!-- if @match.user_is_particpant?(current_user) -->

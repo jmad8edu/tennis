@@ -11,7 +11,7 @@ class Notification < ActiveRecord::Base
 		when 2;
 			"#{self.sender.name} accepted your invitation!"
 		when 3;
-			"#{self.sender.name} rejected your invitation"
+			"#{self.sender.name} declined your invitation"
 	end
   end
 

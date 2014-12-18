@@ -110,43 +110,79 @@ footer {
 
 /* sidebar */
 
-aside {
-  section.user_info {
-    margin-top: 20px;
+.user-gravatar {
+  margin-top: 20px;
+  h1 {
+    font-size: 1.4em;
+    letter-spacing: -1px;
+    margin:3px 0 0 0;
   }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-  }
+}
+
+.user-info{
+  margin-top:15px;
+  max-width:300px;
 }
 
 .gravatar {
-  margin-right: 10px;
+  //default value
 }
 
-.gravatar_edit {
+.gravatar-edit {
   margin-top: 15px;
   text-align: center;
 }
 
-.gravatar_match{
-  
+.gravatar-match{
+  img {
+    max-width: 150px;
+    width:100%;
+  }
+  h1 {
+    font-size: 16px;
+    letter-spacing: -1px;
+    margin:3px 0 0 0;
+    font-weight: normal;
+  }
+}
+
+.match-verses{
+  border-top:1px solid gray; 
+  border-bottom:1px solid gray;
+}
+
+.no-padding{
+  padding:0;
+}
+
+.key-value-group{
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-color:rgb(221, 221, 221);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  .key-value-row:not(:last-child){
+    border-bottom: 1px solid rgb(221, 221, 221);
+  }
+  .key-value-row{
+    display: table-row;
+    .key-value-item{
+      display: table-cell;
+      padding: 10px 15px;
+    }
+    .key-value-item:first-child{
+      color: #31708f;
+      background-color: #d9edf7;
+      font-weight:bold;
+    }
+    .key-value-item:not(:last-child){
+      border-right: 1px solid rgb(221, 221, 221);
+    }
+    @extend .row;
+    margin:0;
+  }
 }
 
 /* forms */
@@ -230,6 +266,14 @@ input {
   @extend .glyphicon-chevron-down;
 }
 @media (max-width: $screen-xs-max) {
+  .text-center-xs{
+    text-align: center !important;
+  }
+  .center-block-xs{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
   ul.pagination{
     li:not(.prev):not(.next) a{
       width:30px;

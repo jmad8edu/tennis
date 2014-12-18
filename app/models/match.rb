@@ -51,6 +51,18 @@ class Match < ActiveRecord::Base
 							 notifiable: 			self)
 	end
 
+	def user_is_particpant?(user)
+		user == self.inviter || user == self.invitee
+	end
+
+	def user_responded(user)
+		if user == self.inviter
+			self.inviter_accepted != nil
+		elsif user == self.invitee
+			self.invitee_accepted != nil
+		end
+	end
+
 	def can_accept?(user)
 		if user == self.inviter
 			self.inviter_accepted == nil ? true : !self.inviter_accepted
@@ -61,7 +73,7 @@ class Match < ActiveRecord::Base
 		end
 	end
 
-	def can_reject?(user)
+	def can_decline?(user)
 		if user == self.inviter
 			self.inviter_accepted == nil ? true : self.inviter_accepted
 		elsif user == self.invitee
