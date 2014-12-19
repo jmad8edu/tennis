@@ -1,0 +1,8 @@
+<div class="row message">
+	<div class="col-xs-12" >
+		<%= link_to @message.sender.name, @message.sender, style: "font-size:12px; color:gray; text-decoration:none;" %>
+	</div>
+	<div class="col-xs-12">
+		<%= @message.message %>
+	</div>
+</div>

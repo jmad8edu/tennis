@@ -32,9 +32,9 @@ print "Creating SkillLevel\t\t\t(11/12)\r"
 SkillLevel.create!(skill_level: "Professional",
 				   ntrp_rating: "6.5")
 print "Creating SkillLevel\t\t\t(12/12)\n"
-
 SkillLevel.create!(skill_level: "Professional",
 				   ntrp_rating: "7.0")
+
 NotificationType.create!(description: "Invitation Received")
 NotificationType.create!(description: "Invitation Accepted")
 NotificationType.create!(description: "Invitation Declined")
@@ -89,18 +89,26 @@ print "Creating Players\t\t\t(15/15)\n"
 
 
 print "Creating Matches\t\t\t(1/6)\r"
-Match.create!(inviter_id:       2,
-              invitee_id:       1,
-              date:             "12-25-2014",
-              time:             "1:30 PM",
-              address_attributes:{
-                address_1: Faker::Address.street_address,
-                address_2: Faker::Address.secondary_address,
-                city: Faker::Address.city,
-                state: "Utah",
-                postal_code: zip1,
-                country: "USA"
-              })
+m = Match.create!(inviter_id:       2,
+                  invitee_id:       1,
+                  date:             "12-25-2014",
+                  time:             "1:30 PM",
+                  address_attributes:{
+                    address_1:      Faker::Address.street_address,
+                    address_2:      Faker::Address.secondary_address,
+                    city:           Faker::Address.city,
+                    state:          "Utah",
+                    postal_code:    zip1,
+                    country:        "USA"
+                  })
+
+Message.create!(sender_id:       2,
+                message:         "Come on man, just play!",
+                messagable:      m)
+Message.create!(sender_id:       1,
+                message:         "Alright, I'll play, but I can't play that day.",
+                messagable:      m)
+
 print "Creating Matches\t\t\t(2/6)\r"
 Match.create!(inviter_id:       3,
               invitee_id:       1,

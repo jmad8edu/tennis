@@ -21,6 +21,13 @@
 //= require browser_timezone_rails/application.js
 //= require turbolinks
 
+$(function(){
+  var faye = new Faye.Client('http://localhost:9292/faye');
+  n = faye.subscribe("/messages/new", function(data){
+    eval(data);
+  });
+});
+
 $(document).ready(function () {
   $('[data-toggle="popover"]').popover();
   $('[data-toggle="tooltip"]').tooltip();

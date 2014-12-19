@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   
-  get   'mark_read'                => 'notifications#mark_read'
+  post   'matches/submit_message'   => 'matches#submit_message'
+  get    'mark_read'                => 'notifications#mark_read'
   get    'notifications'   	        => 'notifications#index'
   get 	 'about'   							    => 'static_pages#about'
   get 	 'contact' 							    => 'static_pages#contact'

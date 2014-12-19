@@ -1,0 +1,4 @@
+<% broadcast "/messages/new" do %>
+	$("<%= j (render 'submit_message') %>").insertAfter("#messages > div.message:last");
+<% end %>
+$("#new_message")[0].reset();

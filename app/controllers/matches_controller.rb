@@ -75,6 +75,20 @@ class MatchesController < ApplicationController
     redirect_to :back
   end
 
+  def submit_message
+    respond_to do |format|
+      match = Match.find(params[:match_id])
+      if (match.inviter == current_user || match.invitee == current_user) && !params[:content].blank?
+        @message = Message.create(sender: current_user, message: params[:content], messagable: match)
+        Notification.create!(receiver:              match.inviter == current_user ? match.invitee : match.inviter,
+                             sender:                current_user,
+                             notification_type_id:  4,
+                             notifiable:            match)
+        format.js
+      end
+    end
+  end
+
   private
     def match_params
       params.require(:match).permit(:invitee_id, :date, :time,

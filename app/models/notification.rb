@@ -12,6 +12,8 @@ class Notification < ActiveRecord::Base
 			"#{self.sender.name} accepted your invitation!"
 		when 3;
 			"#{self.sender.name} declined your invitation"
+    when 4;
+      "#{self.sender.name} wrote some trash talk for your match"
 	end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214055648) do
+ActiveRecord::Schema.define(version: 20141218072747) do
 
   create_table "addresses", force: true do |t|
     t.string   "address_1"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20141214055648) do
 
   add_index "matches", ["invitee_id"], name: "index_matches_on_invitee_id"
   add_index "matches", ["inviter_id"], name: "index_matches_on_inviter_id"
+
+  create_table "messages", force: true do |t|
+    t.integer  "sender_id"
+    t.string   "message"
+    t.integer  "messagable_id"
+    t.string   "messagable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "notification_types", force: true do |t|
     t.string   "description", null: false

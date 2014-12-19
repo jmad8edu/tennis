@@ -24,6 +24,9 @@ gem 'bootstrap-timepicker-rails-addon', :require => 'bootstrap-timepicker-rails-
                                         :git => 'git://github.com/ywjno/bootstrap-timepicker-rails-addon.git'
 gem 'browser-timezone-rails'
 gem 'jquery-turbolinks',                    '2.1.0'
+gem 'faye',                                 '1.0.3'
+gem 'thin'
+gem 'nifty-generators'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

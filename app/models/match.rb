@@ -1,6 +1,7 @@
 class Match < ActiveRecord::Base
  	has_one :address, as: :addressable, dependent: :destroy
  	has_many :notifications, as: :notifiable, dependent: :destroy
+ 	has_many :messages, as: :messagable, dependent: :destroy
 	belongs_to :result
 	belongs_to :inviter, class_name: "User"
 	belongs_to :invitee, class_name: "User"

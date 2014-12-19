@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :losses, class_name: "Result", foreign_key: "loser_id"
   has_many :inviter_matches, class_name: "Match", foreign_key: "inviter_id"
   has_many :invitee_matches, class_name: "Match", foreign_key: "invitee_id"
+  has_many :messages, class_name: "Message", foreign_key: "sender_id"
   
   before_save :format_fields
   validates :first_name,  presence: true, length: { maximum: 50 }
