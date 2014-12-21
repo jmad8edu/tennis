@@ -94,34 +94,31 @@
 	</div>
 </div>
 
-
-
-
 <div class="row">
-	<div class="col-xs-12 col-sm-8 col-sm-offset-2" id="messages" style=";border-radius:4px;border:1px solid rgb(60, 118, 61);">
-		<h1>Trash Talk </h1>
-		<% @match.messages.each do |m| %>
-			<div class="row message">
-				<div class="col-xs-12" >
-					<%= link_to m.sender.name, m.sender, style: "font-size:12px; color:gray; text-decoration:none;" %>
-				</div>
+	<h3 style="text-align:center;">Trash Talk </h3 style="text-align:center;">
+	<div style="width:95%; margin:0 auto;">
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2" id="messages" style="max-height:400px;overflow:scroll;border-radius:4px;border:1px solid rgb(60, 118, 61);padding-top:10px;">
+			<% @match.messages.each do |m| %>
+				<%= render "message", m: m %>
+			<% end %>
+			<div class="row">
 				<div class="col-xs-12">
-					<%= m.message %>
+					<%= form_tag "submit_message", remote: true, method: :post, id: "new_message"  %>
+						<%= hidden_field_tag "match_id", @match.id %>
+						<div class="input-group" style="margin: 10px 0;">
+							<%= text_field_tag "content", nil, class: "form-control", placeholder: "Enter new message" %>
+							<span class="input-group-btn">
+								<%= button_tag "Submit", class: "btn btn-default" %>
+							</span>
+						</div>
+					
 				</div>
-			</div>
-		<% end %>
-		<div class="row">
-			<div class="col-xs-12">
-				<%= form_tag "submit_message", remote: true, method: :post, id: "new_message"  %>
-					<%= hidden_field_tag "match_id", @match.id %>
-					<div class="input-group">
-						<%= text_field_tag "content", nil, class: "form-control", placeholder: "Enter new message" %>
-						<span class="input-group-btn">
-							<%= button_tag "Submit", class: "btn btn-default" %>
-						</span>
-					</div>
-				
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+	$( "#messages" ).scrollTop( $( "#messages" )[0].scrollHeight );
+</script>
+

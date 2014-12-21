@@ -1,4 +1,5 @@
 <% broadcast "/messages/new" do %>
-	$("<%= j (render 'submit_message') %>").insertAfter("#messages > div.message:last");
+	$("<%= j (render 'message', m: @message) %>").insertAfter("#messages > div.message:last");
+	$( "#messages" ).scrollTop( $( "#messages" )[0].scrollHeight );
 <% end %>
 $("#new_message")[0].reset();
