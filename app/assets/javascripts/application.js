@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require angular
@@ -19,14 +20,12 @@
 //= require bootstrap-datepicker
 //= require bootstrap-timepicker
 //= require browser_timezone_rails/application.js
-//= require turbolinks
 
-$(function(){
+
   var faye = new Faye.Client("http://justinmadsen.me/faye");
   n = faye.subscribe("/messages/new", function(data){
     eval(data);
   });
-});
 
 $(document).ready(function () {
   $('[data-toggle="popover"]').popover();
