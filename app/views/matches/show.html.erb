@@ -95,13 +95,17 @@
 </div>
 
 <div class="row">
-	<h3 style="text-align:center;">Trash Talk </h3 style="text-align:center;">
 	<div style="width:95%; margin:0 auto;">
-		<div class="col-xs-12 col-sm-8 col-sm-offset-2" id="messages" style="max-height:400px;overflow:scroll;border-radius:4px;border:1px solid rgb(60, 118, 61);padding-top:10px;">
-			<% @match.messages.each do |m| %>
-				<%= render "message", m: m %>
-			<% end %>
-			<div class="row">
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2" id="message-wrapper" style="border-radius:4px; border:1px solid rgb(60, 118, 61); padding:0;">
+			<div class="row" style="width:100%;margin:0 auto;border-bottom: 1px solid gray; background-color:lightgray;">
+				<h3 style="text-align:center; margin:10px auto; padding: 0;">Trash Talk </h3 style="text-align:center;">
+			</div>
+			<div id="messages" style="height:400px; overflow:scroll;">
+				<% @match.messages.each do |m| %>
+					<%= render "message", m: m %>
+				<% end %>
+			</div>
+			<div class="row" style="width:100%;margin:0 auto;border-top: 1px solid gray; background-color:lightgray;">
 				<div class="col-xs-12">
 					<%= form_tag "submit_message", remote: true, method: :post, id: "new_message"  %>
 						<%= hidden_field_tag "match_id", @match.id %>
@@ -119,6 +123,10 @@
 </div>
 
 <script>
+	var faye = new Faye.Client("http://justinmadsen.me/faye");
+    faye.subscribe("/messages/new/<%= @match.id %>", function(data){
+      eval(data);
+    });
 	$( "#messages" ).scrollTop( $( "#messages" )[0].scrollHeight );
 </script>
 

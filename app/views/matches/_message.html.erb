@@ -1,11 +1,11 @@
-<div class="row message">
+<div class="row message" style="width:100%;margin:10px auto 0 auto;">
 	<div class="col-xs-2">
 		<%= link_to m.sender do %>
 			<%= gravatar_for m.sender, size: 50, class: "img-thumbnail" %>
 		<% end %>
 	</div>
 	<div class="col-xs-10" style="padding-left:0; margin-left:-10px;padding-right:5px;" >
-		<div class="panel panel-default">
+		<div class="panel panel-default" style="margin-bottom:10px;">
 		  <div class="panel-heading">
 		  	<%= link_to m.sender.name, m.sender, style: "text-decoration:none;" %>
 		  	<span class="pull-right" style="font-size:12px; color:gray;"> <%= get_time_then_date(m.created_at) %> </span>

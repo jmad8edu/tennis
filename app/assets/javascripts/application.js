@@ -21,12 +21,6 @@
 //= require bootstrap-timepicker
 //= require browser_timezone_rails/application.js
 
-
-  var faye = new Faye.Client("http://justinmadsen.me/faye");
-  n = faye.subscribe("/messages/new", function(data){
-    eval(data);
-  });
-
 $(document).ready(function () {
   $('[data-toggle="popover"]').popover();
   $('[data-toggle="tooltip"]').tooltip();
