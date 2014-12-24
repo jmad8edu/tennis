@@ -20,7 +20,7 @@
           <span><b>Location: </b></span><span><%= match.address %></span>
         </div>
         <div class="col-xs-12 col-sm-3">  
-          <span><b>Status: </b></span><span><%= match.status %></span>
+          <span><b>Status: </b></span><span><%= match.status(current_user) %></span>
         </div>
       </div>
     <% end %>

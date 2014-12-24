@@ -97,15 +97,23 @@ class Match < ActiveRecord::Base
 			AND scheduled_date > '#{DateTime.now}'")
 	end
 
-	def status
+	def status(current_user)
 		if self.scheduled_date < DateTime.now
-			"Past date"
-		elsif self.inviter_accepted == nil
-			"Awaiting response from #{self.inviter.name}"
-		elsif self.invitee_accepted == nil
-			"Awaiting response from #{self.invitee.name}"
+			"<span class='text-danger'>Past date</span>".html_safe
+		elsif self.inviter_accepted == nil || self.invitee_accepted == nil
+			"<span class='text-warning'>Pending</span>".html_safe
+		elsif !self.inviter_accepted || !self.invitee_accepted
+			"<span class='text-danger'>Declined</span>".html_safe
+		# elsif !self.inviter_accepted && self.inviter_accepted != nil
+		# 	"#{self.inviter == current_user ? 'You' : self.inviter.first_name} declined this match."
+		# elsif !self.invitee_accepted && self.invitee_accepted != nil
+		# 	"#{self.invitee == current_user ? 'You' : self.invitee.first_name} declined this match."
+		# elsif self.inviter_accepted == nil
+		# 	"Awaiting #{self.inviter == current_user ? 'your' : self.inviter.first_name + '\'s'} response."
+		# elsif self.invitee_accepted == nil
+		# 	"Awaiting #{self.invitee == current_user ? 'your' : self.invitee.first_name + '\'s'} response."
 		else
-			"Ready for match"
+			"<span class='text-success'>Ready for match</span>".html_safe
 		end
 	end
 end
