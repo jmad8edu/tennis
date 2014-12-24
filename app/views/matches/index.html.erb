@@ -1,24 +1,28 @@
 <% provide(:title, 'Tennis matches') %>
-<h1>Listing Matches</h1>
+<h1>Your Tennis Matches</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @matches.each do |match| %>
-      <tr>
-        <td><%= link_to 'Show', match %></td>
-        <td><%= link_to 'Edit', edit_match_path(match) %></td>
-        <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="list-group">
+  <% @matches.each do |match| %>
+    <%= link_to match, class:"list-group-item" do %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3" style="text-align:center">
+          <div>
+            <%= gravatar_for match.inviter == current_user ? match.invitee : match.inviter, size:50, class: "img-thumbnail" %> 
+          </div>
+          <div style="font-weight:bold;">
+            <%= match.inviter == current_user ? match.invitee.name : match.inviter.name %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">  
+          <span><b>Date: </b></span><span><%= "#{get_date(match.scheduled_date)} at #{get_time(match.scheduled_date)}" %></span>
+        </div>
+        <div class="col-xs-12 col-sm-3">  
+          <span><b>Location: </b></span><span><%= match.address %></span>
+        </div>
+        <div class="col-xs-12 col-sm-3">  
+          <span><b>Status: </b></span><span><%= match.status %></span>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Match', new_match_path %>
+  <% end %>
+</div>

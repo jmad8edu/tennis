@@ -7,6 +7,9 @@
 						<%= button_to 'Accept', {controller: "matches", action: "respond", response: true, id: @match.id}, method: :post, class: "btn btn-success", style: "width:100px !important;" %>
 					</div>
 				<% end %>
+				<div style="display:inline-block;">
+					<%= link_to 'Edit Match', edit_match_path, class: "btn btn-info", style: "width:100px !important;" %>
+				</div>
 				<% if @match.can_decline?(current_user) %>
 					<div style="display:inline-block;">
 						<%= button_to 'Decline', {controller: "matches", action: "respond", response: false, id: @match.id}, method: :post, class: "btn btn-danger", style: "width:100px !important;" %>

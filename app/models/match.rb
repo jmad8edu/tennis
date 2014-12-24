@@ -52,6 +52,13 @@ class Match < ActiveRecord::Base
 							 notifiable: 			self)
 	end
 
+	def edit_notification(receiver, sender)
+		Notification.create!(receiver_id: 			receiver.id,
+							 sender_id: 			sender.id,
+							 notification_type_id: 	5,
+							 notifiable: 			self)
+	end
+
 	def user_is_particpant?(user)
 		user == self.inviter || user == self.invitee
 	end
@@ -81,6 +88,24 @@ class Match < ActiveRecord::Base
 			self.invitee_accepted == nil ? true : self.invitee_accepted
 		else
 			false
+		end
+	end
+
+	def self.get_match_between_players(user1_id, user2_id)
+		where("((inviter_id = #{user1_id} AND invitee_id = #{user2_id}) 
+			OR (inviter_id = #{user2_id} AND invitee_id = #{user1_id}))
+			AND scheduled_date > '#{DateTime.now}'")
+	end
+
+	def status
+		if self.scheduled_date < DateTime.now
+			"Past date"
+		elsif self.inviter_accepted == nil
+			"Awaiting response from #{self.inviter.name}"
+		elsif self.invitee_accepted == nil
+			"Awaiting response from #{self.invitee.name}"
+		else
+			"Ready for match"
 		end
 	end
 end

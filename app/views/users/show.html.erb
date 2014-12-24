@@ -13,6 +13,10 @@
 			<div style="font-size:12px;">
 				(<%= link_to "Edit my account", edit_user_path %>)
 			</div>
+		<% elsif Match.get_match_between_players(current_user.id, @user.id).size > 0 %>
+			<div style="margin-top:10px;">
+				<%= link_to "View Match", Match.get_match_between_players(current_user.id, @user.id)[0], class: "btn btn-large btn-info" %>
+			</div>
 		<% else %>
 			<div style="margin-top:10px;">
 				<%= link_to "Challenge", new_match_path + "?user=" + @user.id.to_s, class: "btn btn-large btn-success" %>

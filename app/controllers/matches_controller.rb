@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
   def index
-    @matches = Match.all
+    @matches = Match.all.where("inviter_id = #{current_user.id} OR invitee_id = #{current_user.id}")
   end
 
   def show
@@ -34,14 +34,21 @@ class MatchesController < ApplicationController
 
   def update
     @match = Match.find(params[:id])
-    respond_to do |format|
-      if @match.update(match_params)
-        format.html { redirect_to @match, notice: 'Match was successfully updated.' }
-        format.json { render :show, status: :ok, location: @match }
-      else
-        format.html { render :edit }
-        format.json { render json: @match.errors, status: :unprocessable_entity }
-      end
+    current_is_inviter = @match.inviter == current_user
+    other_player = current_is_inviter ? @match.invitee : @match.inviter
+    if current_is_inviter
+      @match.inviter_accepted = true
+      @match.invitee_accepted = nil
+    else
+      @match.inviter_accepted = nil
+      @match.invitee_accepted = true
+    end
+    if @match.update_attributes(match_params)
+      @match.edit_notification( other_player, current_user)
+      flash[:success] = "Match updated"
+      redirect_to @match
+    else
+      render 'edit'
     end
   end
 

@@ -39,6 +39,7 @@ NotificationType.create!(description: "Invitation Received")
 NotificationType.create!(description: "Invitation Accepted")
 NotificationType.create!(description: "Invitation Declined")
 NotificationType.create!(description: "Message Sent")
+NotificationType.create!(description: "Tennis Match Details Updated")
 
 password = "password"
 print "Creating Players\t\t\t(1/15)\r"
